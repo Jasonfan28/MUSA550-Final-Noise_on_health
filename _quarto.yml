@@ -8,7 +8,7 @@ website:
     background: dark
     search: true
     left:
-      - href: home.qmd
+      - href: index.qmd
         text: Home
       - href: about_me.qmd
         text: About Me
