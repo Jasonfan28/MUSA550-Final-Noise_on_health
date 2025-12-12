@@ -503,8 +503,20 @@ Table&nbsp;1: Robust Ridge Regression Results: Noise Impact on Health
 </figure>
 </div>
 <p>WOW that VIF is bad! Therefore I got rid of features until it wasn’t bad</p>
-<p><img src="images/mid_vif.png" class="img-fluid" alt="mid vif"> While Log_income has a VIF above 5, I’ll be getting rid of something that might be correlated to the income such as poverty. This is due to income showing a lot more about a place such as being wealthy or not, while poverty only shows one statistic.</p>
-<p><img src="images/good_vif.png" class="img-fluid" alt="Final VIF"> Now all VIF is below 5 showing no multicollinearity, meaning that each variables are completely independent of each other.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/mid_vif.png" class="img-fluid figure-img"></p>
+<figcaption>mid vif</figcaption>
+</figure>
+</div>
+<p>While Log_income has a VIF above 5, I’ll be getting rid of something that might be correlated to the income such as poverty. This is due to income showing a lot more about a place such as being wealthy or not, while poverty only shows one statistic.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/good_vif.png" class="img-fluid figure-img"></p>
+<figcaption>Final VIF</figcaption>
+</figure>
+</div>
+<p>Now all VIF is below 5 showing no multicollinearity, meaning that each variables are completely independent of each other.</p>
 </section>
 <section id="p-value-test" class="level3">
 <h3 class="anchored" data-anchor-id="p-value-test">P Value Test</h3>
@@ -530,22 +542,58 @@ Table&nbsp;1: Robust Ridge Regression Results: Noise Impact on Health
 </section>
 <section id="plotting" class="level3">
 <h3 class="anchored" data-anchor-id="plotting">Plotting</h3>
-<p><img src="images/noise_depression.png" class="img-fluid" alt="Interaction between noise and depression"> #### Impact of noise on depression accounting for education level: * Relative Deprivation: Higher socioeconomic standard individuals may feel more “entitled” to quiet environments. When that expectation is violated, the psychological toll (annoyance, frustration, depression) is higher.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/noise_depression.png" class="img-fluid figure-img"></p>
+<figcaption>Interaction between noise and depression</figcaption>
+</figure>
+</div>
+<section id="impact-of-noise-on-depression-accounting-for-education-level" class="level4">
+<h4 class="anchored" data-anchor-id="impact-of-noise-on-depression-accounting-for-education-level">Impact of noise on depression accounting for education level:</h4>
 <ul>
-<li>Awareness vs.&nbsp;Survival: Lower socioeconomic standard populations often face a “hierarchy of needs” where immediate stressors (financial instability, food security, crime) outweigh environmental noise. They may “tune out” the noise psychologically because it is just one of many stressors, resulting in lower reported noise-related depression, even if the noise is high.</li>
+<li><p>Relative Deprivation: Higher socioeconomic standard individuals may feel more “entitled” to quiet environments. When that expectation is violated, the psychological toll (annoyance, frustration, depression) is higher.</p></li>
+<li><p>Awareness vs.&nbsp;Survival: Lower socioeconomic standard populations often face a “hierarchy of needs” where immediate stressors (financial instability, food security, crime) outweigh environmental noise. They may “tune out” the noise psychologically because it is just one of many stressors, resulting in lower reported noise-related depression, even if the noise is high.</p></li>
 </ul>
-<p><img src="images/noise_choles.png" class="img-fluid" alt="Interaction between noise and cholesterol"> #### Impact of noise on cholesterol accounting for education level: * The Body Keeps the Score: Even if lower-education populations do not report higher depression, their bodies are biologically reacting to the noise stressor. The noise is triggering cortisol production and raising cholesterol, regardless of their conscious “acceptance” of the noise.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/noise_choles.png" class="img-fluid figure-img"></p>
+<figcaption>Interaction between noise and cholesterol</figcaption>
+</figure>
+</div>
+</section>
+<section id="impact-of-noise-on-cholesterol-accounting-for-education-level" class="level4">
+<h4 class="anchored" data-anchor-id="impact-of-noise-on-cholesterol-accounting-for-education-level">Impact of noise on cholesterol accounting for education level:</h4>
 <ul>
-<li>Protective Factors for High SES: The highly educated group might be annoyed by the noise, but they have the resources to mitigate the physical damage (better diet, healthcare access, better sound-insulation in homes), keeping their cholesterol levels decoupled from the noise levels.</li>
+<li><p>The Body Keeps the Score: Even if lower-education populations do not report higher depression, their bodies are biologically reacting to the noise stressor. The noise is triggering cortisol production and raising cholesterol, regardless of their conscious “acceptance” of the noise.</p></li>
+<li><p>Protective Factors for High SES: The highly educated group might be annoyed by the noise, but they have the resources to mitigate the physical damage (better diet, healthcare access, better sound-insulation in homes), keeping their cholesterol levels decoupled from the noise levels.</p></li>
 </ul>
+</section>
 </section>
 <section id="cluster-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="cluster-analysis">Cluster Analysis</h3>
 <p>Conducted cluster analysis to see the spatial split of how these factors impact specific communities.</p>
-<p><img src="images/Elbow.png" class="img-fluid" alt="K cluster"> While the drop is great between cluster 1 and 2, it greatly decreases between 2 and 3 and 4. Too vague to fully tell which one to use</p>
-<p><img src="images/silhouette score.png" class="img-fluid" alt="Silhouette score"> While k=2 is the highest silhouette score, having only 2 clusters isn’t going to be helpful.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Elbow.png" class="img-fluid figure-img"></p>
+<figcaption>K cluster</figcaption>
+</figure>
+</div>
+<p>While the drop is great between cluster 1 and 2, it greatly decreases between 2 and 3 and 4. Too vague to fully tell which one to use</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/silhouette score.png" class="img-fluid figure-img"></p>
+<figcaption>Silhouette score</figcaption>
+</figure>
+</div>
+<p>While k=2 is the highest silhouette score, having only 2 clusters isn’t going to be helpful.</p>
 <p>Therefore, I will be using k=4 as the second highest score</p>
-<p><img src="images/4cluster.png" class="img-fluid" alt="cluster"> Cluster 0: Highest noise, lowest income/education. oldest pop, and white (low income, old, white pop with high noise)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/4cluster.png" class="img-fluid figure-img"></p>
+<figcaption>cluster</figcaption>
+</figure>
+</div>
+<p>Cluster 0: Highest noise, lowest income/education. oldest pop, and white (low income, old, white pop with high noise)</p>
 <p>Cluster 1: average across the board (middle ground)</p>
 <p>Cluster 2: Highest income, high education, relatively high noise, very diverse, and pop density (major urban center with wealthy educated and diverse people, still high noise)</p>
 <p>Cluster 3: Lowest noice, highest education (Wealthy highly educated suburbs with little noise stress)</p>
@@ -1200,426 +1248,443 @@ Table&nbsp;1: Robust Ridge Regression Results: Noise Impact on Health
 <span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a>vif_display <span class="op">=</span> vif_data[vif_data[<span class="st">"Feature"</span>] <span class="op">!=</span> <span class="st">'const'</span>].sort_values(<span class="st">'VIF'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vif_display)</span>
 <span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a><span class="al">![mid vif](images/mid_vif.png)</span></span>
-<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>While Log_income has a VIF above 5, I'll be getting rid of something that might be correlated to the income such as poverty. This is due to income showing a lot more about a place such as being wealthy or not, while poverty only shows one statistic. </span>
-<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
-<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "clean VIF"</span></span>
-<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a>vif_features <span class="op">=</span> [<span class="st">'avg_noise_db'</span>,</span>
-<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Total_Pop'</span>,</span>
-<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Log_Income'</span>,</span>
-<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Black'</span>,</span>
-<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Asian'</span>, </span>
-<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Hispanic'</span>, </span>
-<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Degree'</span>, </span>
-<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Senior'</span></span>
-<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a>            ]</span>
-<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a>X_vif <span class="op">=</span> final_df[vif_features].dropna()</span>
-<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a>X_vif[<span class="st">'const'</span>] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a>vif_data <span class="op">=</span> pd.DataFrame()</span>
-<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a>vif_data[<span class="st">"Feature"</span>] <span class="op">=</span> X_vif.columns</span>
-<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a>vif_data[<span class="st">"VIF"</span>] <span class="op">=</span> [variance_inflation_factor(X_vif.values, i) </span>
-<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a>                   <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X_vif.columns))]</span>
-<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a>vif_display <span class="op">=</span> vif_data[vif_data[<span class="st">"Feature"</span>] <span class="op">!=</span> <span class="st">'const'</span>].sort_values(<span class="st">'VIF'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vif_display)</span>
-<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a><span class="al">![Final VIF](images/good_vif.png)</span></span>
-<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a>Now all VIF is below 5 showing no multicollinearity, meaning that each variables are completely independent of each other. </span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a><span class="al">![mid vif](images/mid_vif.png)</span></span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a>While Log_income has a VIF above 5, I'll be getting rid of something that might be correlated to the income such as poverty. This is due to income showing a lot more about a place such as being wealthy or not, while poverty only shows one statistic. </span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "clean VIF"</span></span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a>vif_features <span class="op">=</span> [<span class="st">'avg_noise_db'</span>,</span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Total_Pop'</span>,</span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Log_Income'</span>,</span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Black'</span>,</span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Asian'</span>, </span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Hispanic'</span>, </span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Degree'</span>, </span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Senior'</span></span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a>            ]</span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a>X_vif <span class="op">=</span> final_df[vif_features].dropna()</span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a>X_vif[<span class="st">'const'</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a>vif_data <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a>vif_data[<span class="st">"Feature"</span>] <span class="op">=</span> X_vif.columns</span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a>vif_data[<span class="st">"VIF"</span>] <span class="op">=</span> [variance_inflation_factor(X_vif.values, i) </span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a>                   <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X_vif.columns))]</span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a>vif_display <span class="op">=</span> vif_data[vif_data[<span class="st">"Feature"</span>] <span class="op">!=</span> <span class="st">'const'</span>].sort_values(<span class="st">'VIF'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vif_display)</span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a><span class="fu">### P Value Test</span></span>
-<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
-<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "P value"</span></span>
-<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a>predictors <span class="op">=</span> [<span class="st">'avg_noise_db'</span>,</span>
-<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Total_Pop'</span>,</span>
-<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Log_Income'</span>,</span>
-<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Black'</span>,</span>
-<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Asian'</span>, </span>
-<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Hispanic'</span>, </span>
-<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Degree'</span>, </span>
-<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Senior'</span></span>
-<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a>            ]</span>
-<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> outcome_var <span class="kw">in</span> outcomes_of_interest:</span>
-<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">"</span> <span class="op">+</span> <span class="st">"="</span><span class="op">*</span><span class="dv">60</span>)</span>
-<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"RUNNING REGRESSION FOR: </span><span class="sc">{</span>outcome_var<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"="</span><span class="op">*</span><span class="dv">60</span>)</span>
-<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Safety Check: Ensure the outcome exists in the dataframe</span></span>
-<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> outcome_var <span class="kw">not</span> <span class="kw">in</span> final_df.columns:</span>
-<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Skipping </span><span class="sc">{</span>outcome_var<span class="sc">}</span><span class="ss">: Column not found in dataframe."</span>)</span>
-<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 1. Prepare Data specific to this outcome</span></span>
-<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We drop NA values only for the current outcome + predictors</span></span>
-<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This preserves data for other outcomes if this one has missing rows</span></span>
-<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a>    regression_df <span class="op">=</span> final_df.dropna(subset<span class="op">=</span>predictors <span class="op">+</span> [outcome_var]).copy()</span>
-<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2. Define X (Features) and y (Target)</span></span>
-<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> regression_df[predictors]</span>
-<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> regression_df[outcome_var]</span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a><span class="al">![Final VIF](images/good_vif.png)</span></span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a>Now all VIF is below 5 showing no multicollinearity, meaning that each variables are completely independent of each other. </span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a><span class="fu">### P Value Test</span></span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "P value"</span></span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a>predictors <span class="op">=</span> [<span class="st">'avg_noise_db'</span>,</span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Total_Pop'</span>,</span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Log_Income'</span>,</span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Black'</span>,</span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Asian'</span>, </span>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Hispanic'</span>, </span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Degree'</span>, </span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Pct_Senior'</span></span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a>            ]</span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> outcome_var <span class="kw">in</span> outcomes_of_interest:</span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">"</span> <span class="op">+</span> <span class="st">"="</span><span class="op">*</span><span class="dv">60</span>)</span>
+<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"RUNNING REGRESSION FOR: </span><span class="sc">{</span>outcome_var<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"="</span><span class="op">*</span><span class="dv">60</span>)</span>
+<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Safety Check: Ensure the outcome exists in the dataframe</span></span>
+<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> outcome_var <span class="kw">not</span> <span class="kw">in</span> final_df.columns:</span>
+<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Skipping </span><span class="sc">{</span>outcome_var<span class="sc">}</span><span class="ss">: Column not found in dataframe."</span>)</span>
+<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 1. Prepare Data specific to this outcome</span></span>
+<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We drop NA values only for the current outcome + predictors</span></span>
+<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This preserves data for other outcomes if this one has missing rows</span></span>
+<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a>    regression_df <span class="op">=</span> final_df.dropna(subset<span class="op">=</span>predictors <span class="op">+</span> [outcome_var]).copy()</span>
 <span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 3. Add a Constant (Intercept)</span></span>
-<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Essential for OLS, otherwise it forces the line through (0,0)</span></span>
-<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> sm.add_constant(X)</span>
+<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2. Define X (Features) and y (Target)</span></span>
+<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> regression_df[predictors]</span>
+<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> regression_df[outcome_var]</span>
 <span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 4. Fit the Model</span></span>
-<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a>        ols_model <span class="op">=</span> sm.OLS(y, X).fit()</span>
-<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 5. Print Summary</span></span>
-<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(ols_model.summary())</span>
-<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error running regression for </span><span class="sc">{</span>outcome_var<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a>Found very little significance, with p-values all being high, and a large amount of multicollinearity. Therefore, I started to look for potential interaction terms. The assumption for these results is due to socioeconomic variables having too much correlation. </span>
-<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
-<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "P value"</span></span>
-<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Interaction Term</span></span>
-<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a><span class="co"># We use (100 - Pct_Degree) as a proxy for "Low SES" to avoid VIF issues with Income</span></span>
-<span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a>final_df[<span class="st">'Pct_No_Degree'</span>] <span class="op">=</span> <span class="dv">100</span> <span class="op">-</span> final_df[<span class="st">'Pct_Degree'</span>]</span>
-<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a>final_df[<span class="st">'Noise_Interaction'</span>] <span class="op">=</span> final_df[<span class="st">'avg_noise_db'</span>] <span class="op">*</span> final_df[<span class="st">'Pct_No_Degree'</span>]</span>
-<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a>features_interaction <span class="op">=</span> [</span>
-<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a>    <span class="st">'avg_noise_db'</span>,</span>
-<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Noise_Interaction'</span>, </span>
-<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_No_Degree'</span>,</span>
-<span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Log_Income'</span>,</span>
-<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Total_Pop'</span>,</span>
-<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Asian'</span>, </span>
-<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Black'</span>, </span>
-<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Hispanic'</span>, </span>
-<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Senior'</span></span>
-<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a><span class="co"># Run just for Obesity and Depression (your strongest signals)</span></span>
-<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> outcome <span class="kw">in</span> [<span class="st">'Depression among adults'</span>]:</span>
-<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> outcome <span class="kw">in</span> final_df.columns:</span>
-<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a>        df_mod <span class="op">=</span> final_df.dropna(subset<span class="op">=</span>features_interaction <span class="op">+</span> [outcome])</span>
-<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a>        X <span class="op">=</span> sm.add_constant(df_mod[features_interaction])</span>
-<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> df_mod[outcome]</span>
-<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a>        model <span class="op">=</span> sm.OLS(y, X).fit()</span>
-<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">OUTCOME: </span><span class="sc">{</span>outcome<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Interaction P-Value: </span><span class="sc">{</span>model<span class="sc">.</span>pvalues[<span class="st">'Noise_Interaction'</span>]<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"R-Squared: </span><span class="sc">{</span>model<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 3. Add a Constant (Intercept)</span></span>
+<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Essential for OLS, otherwise it forces the line through (0,0)</span></span>
+<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> sm.add_constant(X)</span>
+<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 4. Fit the Model</span></span>
+<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a>        ols_model <span class="op">=</span> sm.OLS(y, X).fit()</span>
+<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 5. Print Summary</span></span>
+<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(ols_model.summary())</span>
+<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error running regression for </span><span class="sc">{</span>outcome_var<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a>Found very little significance, with p-values all being high, and a large amount of multicollinearity. Therefore, I started to look for potential interaction terms. The assumption for these results is due to socioeconomic variables having too much correlation. </span>
+<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
+<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "P value"</span></span>
+<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Interaction Term</span></span>
+<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a><span class="co"># We use (100 - Pct_Degree) as a proxy for "Low SES" to avoid VIF issues with Income</span></span>
+<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a>final_df[<span class="st">'Pct_No_Degree'</span>] <span class="op">=</span> <span class="dv">100</span> <span class="op">-</span> final_df[<span class="st">'Pct_Degree'</span>]</span>
+<span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a>final_df[<span class="st">'Noise_Interaction'</span>] <span class="op">=</span> final_df[<span class="st">'avg_noise_db'</span>] <span class="op">*</span> final_df[<span class="st">'Pct_No_Degree'</span>]</span>
+<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a>features_interaction <span class="op">=</span> [</span>
+<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a>    <span class="st">'avg_noise_db'</span>,</span>
+<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Noise_Interaction'</span>, </span>
+<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_No_Degree'</span>,</span>
+<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Log_Income'</span>,</span>
+<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Total_Pop'</span>,</span>
+<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Asian'</span>, </span>
+<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Black'</span>, </span>
+<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Hispanic'</span>, </span>
+<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Senior'</span></span>
+<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a><span class="co"># Run just for Obesity and Depression (your strongest signals)</span></span>
+<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> outcome <span class="kw">in</span> [<span class="st">'Depression among adults'</span>]:</span>
+<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> outcome <span class="kw">in</span> final_df.columns:</span>
+<span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a>        df_mod <span class="op">=</span> final_df.dropna(subset<span class="op">=</span>features_interaction <span class="op">+</span> [outcome])</span>
+<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a>        X <span class="op">=</span> sm.add_constant(df_mod[features_interaction])</span>
+<span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> df_mod[outcome]</span>
 <span id="cb1-285"><a href="#cb1-285" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-286"><a href="#cb1-286" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> model.pvalues[<span class="st">'Noise_Interaction'</span>] <span class="op">&lt;</span> <span class="fl">0.1</span>:</span>
-<span id="cb1-287"><a href="#cb1-287" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"&gt;&gt;&gt; SIGNIFICANT INTERACTION FOUND! Noise hurts populations with lower education more."</span>)</span>
-<span id="cb1-288"><a href="#cb1-288" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb1-289"><a href="#cb1-289" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Interaction not significant."</span>)</span>
-<span id="cb1-290"><a href="#cb1-290" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-291"><a href="#cb1-291" aria-hidden="true" tabindex="-1"></a><span class="al">![interaction model](images/Interaction%20model.png)</span></span>
-<span id="cb1-292"><a href="#cb1-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-293"><a href="#cb1-293" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Inital Assumption:</span></span>
-<span id="cb1-294"><a href="#cb1-294" aria-hidden="true" tabindex="-1"></a>Noise pollution is an equity issue. It disproportionately impacts mental health in lower-income communities, while wealthier residents are buffered from its effects.</span>
-<span id="cb1-295"><a href="#cb1-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-296"><a href="#cb1-296" aria-hidden="true" tabindex="-1"></a>Wealthy/High-Degree Areas: The noise doesn't bother them as much. Maybe they have better soundproofing, better windows, or the noise is "positive" noise (bustling cafes) rather than "negative" noise (highways/industrial).</span>
+<span id="cb1-286"><a href="#cb1-286" aria-hidden="true" tabindex="-1"></a>        model <span class="op">=</span> sm.OLS(y, X).fit()</span>
+<span id="cb1-287"><a href="#cb1-287" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-288"><a href="#cb1-288" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">OUTCOME: </span><span class="sc">{</span>outcome<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-289"><a href="#cb1-289" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Interaction P-Value: </span><span class="sc">{</span>model<span class="sc">.</span>pvalues[<span class="st">'Noise_Interaction'</span>]<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb1-290"><a href="#cb1-290" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"R-Squared: </span><span class="sc">{</span>model<span class="sc">.</span>rsquared<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb1-291"><a href="#cb1-291" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-292"><a href="#cb1-292" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> model.pvalues[<span class="st">'Noise_Interaction'</span>] <span class="op">&lt;</span> <span class="fl">0.1</span>:</span>
+<span id="cb1-293"><a href="#cb1-293" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"&gt;&gt;&gt; SIGNIFICANT INTERACTION FOUND! Noise hurts populations with lower education more."</span>)</span>
+<span id="cb1-294"><a href="#cb1-294" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-295"><a href="#cb1-295" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Interaction not significant."</span>)</span>
+<span id="cb1-296"><a href="#cb1-296" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-297"><a href="#cb1-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-298"><a href="#cb1-298" aria-hidden="true" tabindex="-1"></a>Lower-Degree Areas: The relationship between Noise and Depression is stronger. Here, noise acts as a stressor that compounds with financial stress.</span>
+<span id="cb1-298"><a href="#cb1-298" aria-hidden="true" tabindex="-1"></a><span class="al">![interaction model](images/Interaction%20model.png)</span></span>
 <span id="cb1-299"><a href="#cb1-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-300"><a href="#cb1-300" aria-hidden="true" tabindex="-1"></a><span class="fu">### Looking for other interactions using this model</span></span>
-<span id="cb1-301"><a href="#cb1-301" aria-hidden="true" tabindex="-1"></a>Created a new predictor that is 'avg_noise_db' * 'Pct_Degree' to represent more than just the people with no degree like before. </span>
+<span id="cb1-300"><a href="#cb1-300" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Inital Assumption:</span></span>
+<span id="cb1-301"><a href="#cb1-301" aria-hidden="true" tabindex="-1"></a>Noise pollution is an equity issue. It disproportionately impacts mental health in lower-income communities, while wealthier residents are buffered from its effects.</span>
 <span id="cb1-302"><a href="#cb1-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb1-306"><a href="#cb1-306" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
-<span id="cb1-307"><a href="#cb1-307" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Other interactions"</span></span>
-<span id="cb1-308"><a href="#cb1-308" aria-hidden="true" tabindex="-1"></a>final_df[<span class="st">'Noise_x_Education'</span>] <span class="op">=</span> final_df[<span class="st">'avg_noise_db'</span>] <span class="op">*</span> final_df[<span class="st">'Pct_Degree'</span>]</span>
-<span id="cb1-309"><a href="#cb1-309" aria-hidden="true" tabindex="-1"></a>predictors <span class="op">=</span> [</span>
-<span id="cb1-310"><a href="#cb1-310" aria-hidden="true" tabindex="-1"></a>    <span class="st">'avg_noise_db'</span>,</span>
-<span id="cb1-311"><a href="#cb1-311" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Noise_x_Education'</span>, </span>
-<span id="cb1-312"><a href="#cb1-312" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_No_Degree'</span>,</span>
-<span id="cb1-313"><a href="#cb1-313" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Log_Income'</span>,</span>
-<span id="cb1-314"><a href="#cb1-314" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Total_Pop'</span>,</span>
-<span id="cb1-315"><a href="#cb1-315" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Asian'</span>, </span>
-<span id="cb1-316"><a href="#cb1-316" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Black'</span>, </span>
-<span id="cb1-317"><a href="#cb1-317" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Hispanic'</span>, </span>
-<span id="cb1-318"><a href="#cb1-318" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Senior'</span></span>
-<span id="cb1-319"><a href="#cb1-319" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb1-320"><a href="#cb1-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-321"><a href="#cb1-321" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> outcome_var <span class="kw">in</span> outcomes_of_interest:</span>
-<span id="cb1-322"><a href="#cb1-322" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-323"><a href="#cb1-323" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Safety check: Ensure column exists</span></span>
-<span id="cb1-324"><a href="#cb1-324" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> outcome_var <span class="kw">not</span> <span class="kw">in</span> final_df.columns:</span>
-<span id="cb1-325"><a href="#cb1-325" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb1-326"><a href="#cb1-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-327"><a href="#cb1-327" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Prepare Data</span></span>
-<span id="cb1-328"><a href="#cb1-328" aria-hidden="true" tabindex="-1"></a>    regression_df <span class="op">=</span> final_df.dropna(subset<span class="op">=</span>predictors <span class="op">+</span> [outcome_var]).copy()</span>
+<span id="cb1-303"><a href="#cb1-303" aria-hidden="true" tabindex="-1"></a>Wealthy/High-Degree Areas: The noise doesn't bother them as much. Maybe they have better soundproofing, better windows, or the noise is "positive" noise (bustling cafes) rather than "negative" noise (highways/industrial).</span>
+<span id="cb1-304"><a href="#cb1-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a>Lower-Degree Areas: The relationship between Noise and Depression is stronger. Here, noise acts as a stressor that compounds with financial stress.</span>
+<span id="cb1-306"><a href="#cb1-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-307"><a href="#cb1-307" aria-hidden="true" tabindex="-1"></a><span class="fu">### Looking for other interactions using this model</span></span>
+<span id="cb1-308"><a href="#cb1-308" aria-hidden="true" tabindex="-1"></a>Created a new predictor that is 'avg_noise_db' * 'Pct_Degree' to represent more than just the people with no degree like before. </span>
+<span id="cb1-309"><a href="#cb1-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-312"><a href="#cb1-312" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb1-313"><a href="#cb1-313" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
+<span id="cb1-314"><a href="#cb1-314" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Other interactions"</span></span>
+<span id="cb1-315"><a href="#cb1-315" aria-hidden="true" tabindex="-1"></a>final_df[<span class="st">'Noise_x_Education'</span>] <span class="op">=</span> final_df[<span class="st">'avg_noise_db'</span>] <span class="op">*</span> final_df[<span class="st">'Pct_Degree'</span>]</span>
+<span id="cb1-316"><a href="#cb1-316" aria-hidden="true" tabindex="-1"></a>predictors <span class="op">=</span> [</span>
+<span id="cb1-317"><a href="#cb1-317" aria-hidden="true" tabindex="-1"></a>    <span class="st">'avg_noise_db'</span>,</span>
+<span id="cb1-318"><a href="#cb1-318" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Noise_x_Education'</span>, </span>
+<span id="cb1-319"><a href="#cb1-319" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_No_Degree'</span>,</span>
+<span id="cb1-320"><a href="#cb1-320" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Log_Income'</span>,</span>
+<span id="cb1-321"><a href="#cb1-321" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Total_Pop'</span>,</span>
+<span id="cb1-322"><a href="#cb1-322" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Asian'</span>, </span>
+<span id="cb1-323"><a href="#cb1-323" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Black'</span>, </span>
+<span id="cb1-324"><a href="#cb1-324" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Hispanic'</span>, </span>
+<span id="cb1-325"><a href="#cb1-325" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Senior'</span></span>
+<span id="cb1-326"><a href="#cb1-326" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-327"><a href="#cb1-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-328"><a href="#cb1-328" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> outcome_var <span class="kw">in</span> outcomes_of_interest:</span>
 <span id="cb1-329"><a href="#cb1-329" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-330"><a href="#cb1-330" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> regression_df[predictors]</span>
-<span id="cb1-331"><a href="#cb1-331" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> regression_df[outcome_var]</span>
-<span id="cb1-332"><a href="#cb1-332" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> sm.add_constant(X)</span>
+<span id="cb1-330"><a href="#cb1-330" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Safety check: Ensure column exists</span></span>
+<span id="cb1-331"><a href="#cb1-331" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> outcome_var <span class="kw">not</span> <span class="kw">in</span> final_df.columns:</span>
+<span id="cb1-332"><a href="#cb1-332" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
 <span id="cb1-333"><a href="#cb1-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-334"><a href="#cb1-334" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fit Model</span></span>
-<span id="cb1-335"><a href="#cb1-335" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb1-336"><a href="#cb1-336" aria-hidden="true" tabindex="-1"></a>        model <span class="op">=</span> sm.OLS(y, X).fit()</span>
-<span id="cb1-337"><a href="#cb1-337" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-338"><a href="#cb1-338" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract P-value for the interaction term</span></span>
-<span id="cb1-339"><a href="#cb1-339" aria-hidden="true" tabindex="-1"></a>        interaction_p_val <span class="op">=</span> model.pvalues.get(<span class="st">'Noise_x_Education'</span>, <span class="fl">1.0</span>)</span>
-<span id="cb1-340"><a href="#cb1-340" aria-hidden="true" tabindex="-1"></a>        interaction_coeff <span class="op">=</span> model.params.get(<span class="st">'Noise_x_Education'</span>, <span class="fl">0.0</span>)</span>
-<span id="cb1-341"><a href="#cb1-341" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-342"><a href="#cb1-342" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="sc">{</span><span class="st">'='</span><span class="op">*</span><span class="dv">60</span><span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-343"><a href="#cb1-343" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"OUTCOME: </span><span class="sc">{</span>outcome_var<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-344"><a href="#cb1-344" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'='</span><span class="op">*</span><span class="dv">60</span><span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-345"><a href="#cb1-345" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-346"><a href="#cb1-346" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Check significance (P &lt; 0.05)</span></span>
-<span id="cb1-347"><a href="#cb1-347" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> interaction_p_val <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
-<span id="cb1-348"><a href="#cb1-348" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"*** SIGNIFICANT INTERACTION DETECTED! ***"</span>)</span>
-<span id="cb1-349"><a href="#cb1-349" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Interaction P-Value: </span><span class="sc">{</span>interaction_p_val<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb1-350"><a href="#cb1-350" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Interaction Coeff:   </span><span class="sc">{</span>interaction_coeff<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb1-351"><a href="#cb1-351" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> interaction_coeff <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb1-352"><a href="#cb1-352" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">"INTERPRETATION: Negative coefficient. Higher education REDUCES the harmful effect of noise."</span>)</span>
-<span id="cb1-353"><a href="#cb1-353" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb1-354"><a href="#cb1-354" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">"INTERPRETATION: Positive coefficient. Higher education INCREASES the effect (unlikely) or Noise hurts high-edu more."</span>)</span>
-<span id="cb1-355"><a href="#cb1-355" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb1-356"><a href="#cb1-356" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"No significant interaction (P = </span><span class="sc">{</span>interaction_p_val<span class="sc">:.3f}</span><span class="ss">)."</span>)</span>
-<span id="cb1-357"><a href="#cb1-357" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb1-358"><a href="#cb1-358" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">30</span>)</span>
-<span id="cb1-359"><a href="#cb1-359" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Uncomment the line below if you want to see the full table for every single one</span></span>
-<span id="cb1-360"><a href="#cb1-360" aria-hidden="true" tabindex="-1"></a>        <span class="co"># print(model.summary())</span></span>
-<span id="cb1-361"><a href="#cb1-361" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-362"><a href="#cb1-362" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb1-363"><a href="#cb1-363" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error processing </span><span class="sc">{</span>outcome_var<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-364"><a href="#cb1-364" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-365"><a href="#cb1-365" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-366"><a href="#cb1-366" aria-hidden="true" tabindex="-1"></a><span class="al">![High Cholesterol Interaction](images/High%20cholestrol%20interaction.png)</span></span>
-<span id="cb1-367"><a href="#cb1-367" aria-hidden="true" tabindex="-1"></a><span class="al">![Depression Interactions](images/depression_interaction.png)</span></span>
+<span id="cb1-334"><a href="#cb1-334" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Prepare Data</span></span>
+<span id="cb1-335"><a href="#cb1-335" aria-hidden="true" tabindex="-1"></a>    regression_df <span class="op">=</span> final_df.dropna(subset<span class="op">=</span>predictors <span class="op">+</span> [outcome_var]).copy()</span>
+<span id="cb1-336"><a href="#cb1-336" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-337"><a href="#cb1-337" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> regression_df[predictors]</span>
+<span id="cb1-338"><a href="#cb1-338" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> regression_df[outcome_var]</span>
+<span id="cb1-339"><a href="#cb1-339" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> sm.add_constant(X)</span>
+<span id="cb1-340"><a href="#cb1-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-341"><a href="#cb1-341" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fit Model</span></span>
+<span id="cb1-342"><a href="#cb1-342" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb1-343"><a href="#cb1-343" aria-hidden="true" tabindex="-1"></a>        model <span class="op">=</span> sm.OLS(y, X).fit()</span>
+<span id="cb1-344"><a href="#cb1-344" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-345"><a href="#cb1-345" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract P-value for the interaction term</span></span>
+<span id="cb1-346"><a href="#cb1-346" aria-hidden="true" tabindex="-1"></a>        interaction_p_val <span class="op">=</span> model.pvalues.get(<span class="st">'Noise_x_Education'</span>, <span class="fl">1.0</span>)</span>
+<span id="cb1-347"><a href="#cb1-347" aria-hidden="true" tabindex="-1"></a>        interaction_coeff <span class="op">=</span> model.params.get(<span class="st">'Noise_x_Education'</span>, <span class="fl">0.0</span>)</span>
+<span id="cb1-348"><a href="#cb1-348" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-349"><a href="#cb1-349" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="sc">{</span><span class="st">'='</span><span class="op">*</span><span class="dv">60</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-350"><a href="#cb1-350" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"OUTCOME: </span><span class="sc">{</span>outcome_var<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-351"><a href="#cb1-351" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'='</span><span class="op">*</span><span class="dv">60</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-352"><a href="#cb1-352" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-353"><a href="#cb1-353" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Check significance (P &lt; 0.05)</span></span>
+<span id="cb1-354"><a href="#cb1-354" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> interaction_p_val <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
+<span id="cb1-355"><a href="#cb1-355" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"*** SIGNIFICANT INTERACTION DETECTED! ***"</span>)</span>
+<span id="cb1-356"><a href="#cb1-356" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Interaction P-Value: </span><span class="sc">{</span>interaction_p_val<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb1-357"><a href="#cb1-357" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Interaction Coeff:   </span><span class="sc">{</span>interaction_coeff<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb1-358"><a href="#cb1-358" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> interaction_coeff <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb1-359"><a href="#cb1-359" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">"INTERPRETATION: Negative coefficient. Higher education REDUCES the harmful effect of noise."</span>)</span>
+<span id="cb1-360"><a href="#cb1-360" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb1-361"><a href="#cb1-361" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">"INTERPRETATION: Positive coefficient. Higher education INCREASES the effect (unlikely) or Noise hurts high-edu more."</span>)</span>
+<span id="cb1-362"><a href="#cb1-362" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-363"><a href="#cb1-363" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"No significant interaction (P = </span><span class="sc">{</span>interaction_p_val<span class="sc">:.3f}</span><span class="ss">)."</span>)</span>
+<span id="cb1-364"><a href="#cb1-364" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-365"><a href="#cb1-365" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">30</span>)</span>
+<span id="cb1-366"><a href="#cb1-366" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Uncomment the line below if you want to see the full table for every single one</span></span>
+<span id="cb1-367"><a href="#cb1-367" aria-hidden="true" tabindex="-1"></a>        <span class="co"># print(model.summary())</span></span>
 <span id="cb1-368"><a href="#cb1-368" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-369"><a href="#cb1-369" aria-hidden="true" tabindex="-1"></a>Depression along with High Cholesterol appeared to have significant interactions. </span>
-<span id="cb1-370"><a href="#cb1-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-371"><a href="#cb1-371" aria-hidden="true" tabindex="-1"></a><span class="fu">### Plotting</span></span>
-<span id="cb1-374"><a href="#cb1-374" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb1-375"><a href="#cb1-375" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
-<span id="cb1-376"><a href="#cb1-376" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Plotting"</span></span>
+<span id="cb1-369"><a href="#cb1-369" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb1-370"><a href="#cb1-370" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error processing </span><span class="sc">{</span>outcome_var<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-371"><a href="#cb1-371" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-372"><a href="#cb1-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-373"><a href="#cb1-373" aria-hidden="true" tabindex="-1"></a><span class="al">![High Cholesterol Interaction](images/High%20cholestrol%20interaction.png)</span></span>
+<span id="cb1-374"><a href="#cb1-374" aria-hidden="true" tabindex="-1"></a><span class="al">![Depression Interactions](images/depression_interaction.png)</span></span>
+<span id="cb1-375"><a href="#cb1-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-376"><a href="#cb1-376" aria-hidden="true" tabindex="-1"></a>Depression along with High Cholesterol appeared to have significant interactions. </span>
 <span id="cb1-377"><a href="#cb1-377" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-378"><a href="#cb1-378" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-379"><a href="#cb1-379" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-380"><a href="#cb1-380" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-381"><a href="#cb1-381" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-382"><a href="#cb1-382" aria-hidden="true" tabindex="-1"></a><span class="co"># INTERACTION PLOT: Noise vs Depression by Education Level</span></span>
-<span id="cb1-383"><a href="#cb1-383" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Create a Categorical Education Variable for plotting</span></span>
-<span id="cb1-384"><a href="#cb1-384" aria-hidden="true" tabindex="-1"></a><span class="co"># (Split the continuous 'Pct_Degree' into 'Low' and 'High' groups based on the median)</span></span>
-<span id="cb1-385"><a href="#cb1-385" aria-hidden="true" tabindex="-1"></a>median_edu <span class="op">=</span> final_df[<span class="st">'Pct_Degree'</span>].median()</span>
-<span id="cb1-386"><a href="#cb1-386" aria-hidden="true" tabindex="-1"></a>final_df[<span class="st">'Education_Level'</span>] <span class="op">=</span> final_df[<span class="st">'Pct_Degree'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">'High Education'</span> <span class="cf">if</span> x <span class="op">&gt;</span> median_edu <span class="cf">else</span> <span class="st">'Low Education'</span>)</span>
-<span id="cb1-387"><a href="#cb1-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-388"><a href="#cb1-388" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Set up the plot</span></span>
-<span id="cb1-389"><a href="#cb1-389" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb1-390"><a href="#cb1-390" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-391"><a href="#cb1-391" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Plot the Regression Lines (lmplot)</span></span>
-<span id="cb1-392"><a href="#cb1-392" aria-hidden="true" tabindex="-1"></a><span class="co"># This draws two lines: one for High Edu, one for Low Edu</span></span>
-<span id="cb1-393"><a href="#cb1-393" aria-hidden="true" tabindex="-1"></a>sns.lmplot(</span>
-<span id="cb1-394"><a href="#cb1-394" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>final_df, </span>
-<span id="cb1-395"><a href="#cb1-395" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'avg_noise_db'</span>, </span>
-<span id="cb1-396"><a href="#cb1-396" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'Depression among adults'</span>, </span>
-<span id="cb1-397"><a href="#cb1-397" aria-hidden="true" tabindex="-1"></a>    hue<span class="op">=</span><span class="st">'Education_Level'</span>,   <span class="co"># This creates the split</span></span>
-<span id="cb1-398"><a href="#cb1-398" aria-hidden="true" tabindex="-1"></a>    palette<span class="op">=</span>{<span class="st">'High Education'</span>: <span class="st">'blue'</span>, <span class="st">'Low Education'</span>: <span class="st">'red'</span>},</span>
-<span id="cb1-399"><a href="#cb1-399" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">6</span>, </span>
-<span id="cb1-400"><a href="#cb1-400" aria-hidden="true" tabindex="-1"></a>    aspect<span class="op">=</span><span class="fl">1.5</span>,</span>
-<span id="cb1-401"><a href="#cb1-401" aria-hidden="true" tabindex="-1"></a>    ci<span class="op">=</span><span class="dv">95</span>  <span class="co"># Show confidence intervals</span></span>
-<span id="cb1-402"><a href="#cb1-402" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-403"><a href="#cb1-403" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-404"><a href="#cb1-404" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Interaction Effect: Noise Impact on Depression by Education Level'</span>)</span>
-<span id="cb1-405"><a href="#cb1-405" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Average Noise (dB)'</span>)</span>
-<span id="cb1-406"><a href="#cb1-406" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Depression Prevalence (%)'</span>)</span>
-<span id="cb1-407"><a href="#cb1-407" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb1-408"><a href="#cb1-408" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb1-409"><a href="#cb1-409" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-410"><a href="#cb1-410" aria-hidden="true" tabindex="-1"></a><span class="al">![Interaction between noise and depression](images/noise_depression.png)</span></span>
-<span id="cb1-411"><a href="#cb1-411" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Impact of noise on depression accounting for education level:</span></span>
-<span id="cb1-412"><a href="#cb1-412" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Relative Deprivation: Higher socioeconomic standard individuals may feel more "entitled" to quiet environments. When that expectation is violated, the psychological toll (annoyance, frustration, depression) is higher.</span>
-<span id="cb1-413"><a href="#cb1-413" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-414"><a href="#cb1-414" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Awareness vs. Survival: Lower socioeconomic standard populations often face a "hierarchy of needs" where immediate stressors (financial instability, food security, crime) outweigh environmental noise. They may "tune out" the noise psychologically because it is just one of many stressors, resulting in lower reported noise-related depression, even if the noise is high.</span>
-<span id="cb1-415"><a href="#cb1-415" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-416"><a href="#cb1-416" aria-hidden="true" tabindex="-1"></a><span class="al">![Interaction between noise and cholesterol](images/noise_choles.png)</span></span>
-<span id="cb1-417"><a href="#cb1-417" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Impact of noise on cholesterol accounting for education level:</span></span>
-<span id="cb1-418"><a href="#cb1-418" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>The Body Keeps the Score: Even if lower-education populations do not report higher depression, their bodies are biologically reacting to the noise stressor. The noise is triggering cortisol production and raising cholesterol, regardless of their conscious "acceptance" of the noise.</span>
+<span id="cb1-378"><a href="#cb1-378" aria-hidden="true" tabindex="-1"></a><span class="fu">### Plotting</span></span>
+<span id="cb1-381"><a href="#cb1-381" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb1-382"><a href="#cb1-382" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
+<span id="cb1-383"><a href="#cb1-383" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Plotting"</span></span>
+<span id="cb1-384"><a href="#cb1-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-385"><a href="#cb1-385" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-386"><a href="#cb1-386" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-387"><a href="#cb1-387" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-388"><a href="#cb1-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-389"><a href="#cb1-389" aria-hidden="true" tabindex="-1"></a><span class="co"># INTERACTION PLOT: Noise vs Depression by Education Level</span></span>
+<span id="cb1-390"><a href="#cb1-390" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Create a Categorical Education Variable for plotting</span></span>
+<span id="cb1-391"><a href="#cb1-391" aria-hidden="true" tabindex="-1"></a><span class="co"># (Split the continuous 'Pct_Degree' into 'Low' and 'High' groups based on the median)</span></span>
+<span id="cb1-392"><a href="#cb1-392" aria-hidden="true" tabindex="-1"></a>median_edu <span class="op">=</span> final_df[<span class="st">'Pct_Degree'</span>].median()</span>
+<span id="cb1-393"><a href="#cb1-393" aria-hidden="true" tabindex="-1"></a>final_df[<span class="st">'Education_Level'</span>] <span class="op">=</span> final_df[<span class="st">'Pct_Degree'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">'High Education'</span> <span class="cf">if</span> x <span class="op">&gt;</span> median_edu <span class="cf">else</span> <span class="st">'Low Education'</span>)</span>
+<span id="cb1-394"><a href="#cb1-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-395"><a href="#cb1-395" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Set up the plot</span></span>
+<span id="cb1-396"><a href="#cb1-396" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb1-397"><a href="#cb1-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-398"><a href="#cb1-398" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Plot the Regression Lines (lmplot)</span></span>
+<span id="cb1-399"><a href="#cb1-399" aria-hidden="true" tabindex="-1"></a><span class="co"># This draws two lines: one for High Edu, one for Low Edu</span></span>
+<span id="cb1-400"><a href="#cb1-400" aria-hidden="true" tabindex="-1"></a>sns.lmplot(</span>
+<span id="cb1-401"><a href="#cb1-401" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>final_df, </span>
+<span id="cb1-402"><a href="#cb1-402" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'avg_noise_db'</span>, </span>
+<span id="cb1-403"><a href="#cb1-403" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'Depression among adults'</span>, </span>
+<span id="cb1-404"><a href="#cb1-404" aria-hidden="true" tabindex="-1"></a>    hue<span class="op">=</span><span class="st">'Education_Level'</span>,   <span class="co"># This creates the split</span></span>
+<span id="cb1-405"><a href="#cb1-405" aria-hidden="true" tabindex="-1"></a>    palette<span class="op">=</span>{<span class="st">'High Education'</span>: <span class="st">'blue'</span>, <span class="st">'Low Education'</span>: <span class="st">'red'</span>},</span>
+<span id="cb1-406"><a href="#cb1-406" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">6</span>, </span>
+<span id="cb1-407"><a href="#cb1-407" aria-hidden="true" tabindex="-1"></a>    aspect<span class="op">=</span><span class="fl">1.5</span>,</span>
+<span id="cb1-408"><a href="#cb1-408" aria-hidden="true" tabindex="-1"></a>    ci<span class="op">=</span><span class="dv">95</span>  <span class="co"># Show confidence intervals</span></span>
+<span id="cb1-409"><a href="#cb1-409" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-410"><a href="#cb1-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-411"><a href="#cb1-411" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Interaction Effect: Noise Impact on Depression by Education Level'</span>)</span>
+<span id="cb1-412"><a href="#cb1-412" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Average Noise (dB)'</span>)</span>
+<span id="cb1-413"><a href="#cb1-413" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Depression Prevalence (%)'</span>)</span>
+<span id="cb1-414"><a href="#cb1-414" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb1-415"><a href="#cb1-415" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb1-416"><a href="#cb1-416" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-417"><a href="#cb1-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-418"><a href="#cb1-418" aria-hidden="true" tabindex="-1"></a><span class="al">![Interaction between noise and depression](images/noise_depression.png)</span></span>
 <span id="cb1-419"><a href="#cb1-419" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-420"><a href="#cb1-420" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Protective Factors for High SES: The highly educated group might be annoyed by the noise, but they have the resources to mitigate the physical damage (better diet, healthcare access, better sound-insulation in homes), keeping their cholesterol levels decoupled from the noise levels.</span>
-<span id="cb1-421"><a href="#cb1-421" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-422"><a href="#cb1-422" aria-hidden="true" tabindex="-1"></a><span class="fu">### Cluster Analysis</span></span>
-<span id="cb1-423"><a href="#cb1-423" aria-hidden="true" tabindex="-1"></a>Conducted cluster analysis to see the spatial split of how these factors impact specific communities. </span>
-<span id="cb1-426"><a href="#cb1-426" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb1-427"><a href="#cb1-427" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
-<span id="cb1-428"><a href="#cb1-428" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "P value"</span></span>
+<span id="cb1-420"><a href="#cb1-420" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Impact of noise on depression accounting for education level:</span></span>
+<span id="cb1-421"><a href="#cb1-421" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Relative Deprivation: Higher socioeconomic standard individuals may feel more "entitled" to quiet environments. When that expectation is violated, the psychological toll (annoyance, frustration, depression) is higher.</span>
+<span id="cb1-422"><a href="#cb1-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-423"><a href="#cb1-423" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Awareness vs. Survival: Lower socioeconomic standard populations often face a "hierarchy of needs" where immediate stressors (financial instability, food security, crime) outweigh environmental noise. They may "tune out" the noise psychologically because it is just one of many stressors, resulting in lower reported noise-related depression, even if the noise is high.</span>
+<span id="cb1-424"><a href="#cb1-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-425"><a href="#cb1-425" aria-hidden="true" tabindex="-1"></a><span class="al">![Interaction between noise and cholesterol](images/noise_choles.png)</span></span>
+<span id="cb1-426"><a href="#cb1-426" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-427"><a href="#cb1-427" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Impact of noise on cholesterol accounting for education level:</span></span>
+<span id="cb1-428"><a href="#cb1-428" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>The Body Keeps the Score: Even if lower-education populations do not report higher depression, their bodies are biologically reacting to the noise stressor. The noise is triggering cortisol production and raising cholesterol, regardless of their conscious "acceptance" of the noise.</span>
 <span id="cb1-429"><a href="#cb1-429" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-430"><a href="#cb1-430" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
-<span id="cb1-431"><a href="#cb1-431" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
-<span id="cb1-432"><a href="#cb1-432" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-433"><a href="#cb1-433" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-430"><a href="#cb1-430" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Protective Factors for High SES: The highly educated group might be annoyed by the noise, but they have the resources to mitigate the physical damage (better diet, healthcare access, better sound-insulation in homes), keeping their cholesterol levels decoupled from the noise levels.</span>
+<span id="cb1-431"><a href="#cb1-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-432"><a href="#cb1-432" aria-hidden="true" tabindex="-1"></a><span class="fu">### Cluster Analysis</span></span>
+<span id="cb1-433"><a href="#cb1-433" aria-hidden="true" tabindex="-1"></a>Conducted cluster analysis to see the spatial split of how these factors impact specific communities. </span>
 <span id="cb1-434"><a href="#cb1-434" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-435"><a href="#cb1-435" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Select the features for clustering</span></span>
-<span id="cb1-436"><a href="#cb1-436" aria-hidden="true" tabindex="-1"></a><span class="co"># We want to cluster on Environmental + Demographic factors</span></span>
-<span id="cb1-437"><a href="#cb1-437" aria-hidden="true" tabindex="-1"></a>cluster_features <span class="op">=</span> [</span>
-<span id="cb1-438"><a href="#cb1-438" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Log_Noise_Exposure'</span>,</span>
-<span id="cb1-439"><a href="#cb1-439" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Noise_Interaction'</span>, </span>
-<span id="cb1-440"><a href="#cb1-440" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_No_Degree'</span>,</span>
-<span id="cb1-441"><a href="#cb1-441" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Log_Income'</span>,</span>
-<span id="cb1-442"><a href="#cb1-442" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Total_Pop'</span>,</span>
-<span id="cb1-443"><a href="#cb1-443" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Asian'</span>, </span>
-<span id="cb1-444"><a href="#cb1-444" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Black'</span>, </span>
-<span id="cb1-445"><a href="#cb1-445" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Hispanic'</span>, </span>
-<span id="cb1-446"><a href="#cb1-446" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Senior'</span></span>
-<span id="cb1-447"><a href="#cb1-447" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb1-448"><a href="#cb1-448" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-449"><a href="#cb1-449" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop NaNs just for the clustering subset</span></span>
-<span id="cb1-450"><a href="#cb1-450" aria-hidden="true" tabindex="-1"></a>df_cluster <span class="op">=</span> final_df.dropna(subset<span class="op">=</span>cluster_features).copy()</span>
-<span id="cb1-451"><a href="#cb1-451" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-452"><a href="#cb1-452" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Scale the Data</span></span>
-<span id="cb1-453"><a href="#cb1-453" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
-<span id="cb1-454"><a href="#cb1-454" aria-hidden="true" tabindex="-1"></a>X_scaled <span class="op">=</span> scaler.fit_transform(df_cluster[cluster_features])</span>
-<span id="cb1-455"><a href="#cb1-455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-456"><a href="#cb1-456" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate "Inertia" for K=1 to K=10</span></span>
-<span id="cb1-457"><a href="#cb1-457" aria-hidden="true" tabindex="-1"></a>inertia <span class="op">=</span> []</span>
-<span id="cb1-458"><a href="#cb1-458" aria-hidden="true" tabindex="-1"></a>K_range <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb1-437"><a href="#cb1-437" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb1-438"><a href="#cb1-438" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
+<span id="cb1-439"><a href="#cb1-439" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "P value"</span></span>
+<span id="cb1-440"><a href="#cb1-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-441"><a href="#cb1-441" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-442"><a href="#cb1-442" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb1-443"><a href="#cb1-443" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-444"><a href="#cb1-444" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-445"><a href="#cb1-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-446"><a href="#cb1-446" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Select the features for clustering</span></span>
+<span id="cb1-447"><a href="#cb1-447" aria-hidden="true" tabindex="-1"></a><span class="co"># We want to cluster on Environmental + Demographic factors</span></span>
+<span id="cb1-448"><a href="#cb1-448" aria-hidden="true" tabindex="-1"></a>cluster_features <span class="op">=</span> [</span>
+<span id="cb1-449"><a href="#cb1-449" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Log_Noise_Exposure'</span>,</span>
+<span id="cb1-450"><a href="#cb1-450" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Noise_Interaction'</span>, </span>
+<span id="cb1-451"><a href="#cb1-451" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_No_Degree'</span>,</span>
+<span id="cb1-452"><a href="#cb1-452" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Log_Income'</span>,</span>
+<span id="cb1-453"><a href="#cb1-453" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Total_Pop'</span>,</span>
+<span id="cb1-454"><a href="#cb1-454" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Asian'</span>, </span>
+<span id="cb1-455"><a href="#cb1-455" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Black'</span>, </span>
+<span id="cb1-456"><a href="#cb1-456" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Hispanic'</span>, </span>
+<span id="cb1-457"><a href="#cb1-457" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pct_Senior'</span></span>
+<span id="cb1-458"><a href="#cb1-458" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb1-459"><a href="#cb1-459" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-460"><a href="#cb1-460" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> K_range:</span>
-<span id="cb1-461"><a href="#cb1-461" aria-hidden="true" tabindex="-1"></a>    kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb1-462"><a href="#cb1-462" aria-hidden="true" tabindex="-1"></a>    kmeans.fit(X_scaled)</span>
-<span id="cb1-463"><a href="#cb1-463" aria-hidden="true" tabindex="-1"></a>    inertia.append(kmeans.inertia_)</span>
-<span id="cb1-464"><a href="#cb1-464" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-465"><a href="#cb1-465" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the Elbow</span></span>
-<span id="cb1-466"><a href="#cb1-466" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb1-467"><a href="#cb1-467" aria-hidden="true" tabindex="-1"></a>plt.plot(K_range, inertia, <span class="st">'bo-'</span>)</span>
-<span id="cb1-468"><a href="#cb1-468" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Clusters (k)'</span>)</span>
-<span id="cb1-469"><a href="#cb1-469" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Inertia (Sum of Squared Distances)'</span>)</span>
-<span id="cb1-470"><a href="#cb1-470" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Elbow Method'</span>)</span>
-<span id="cb1-471"><a href="#cb1-471" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb1-472"><a href="#cb1-472" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb1-473"><a href="#cb1-473" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-474"><a href="#cb1-474" aria-hidden="true" tabindex="-1"></a><span class="al">![K cluster](images/Elbow.png)</span></span>
-<span id="cb1-475"><a href="#cb1-475" aria-hidden="true" tabindex="-1"></a>While the drop is great between cluster 1 and 2, it greatly decreases between 2 and 3 and 4. Too vague to fully tell which one to use</span>
-<span id="cb1-476"><a href="#cb1-476" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-479"><a href="#cb1-479" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb1-480"><a href="#cb1-480" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
-<span id="cb1-481"><a href="#cb1-481" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Silhouette Score"</span></span>
-<span id="cb1-482"><a href="#cb1-482" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-483"><a href="#cb1-483" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> silhouette_score</span>
-<span id="cb1-484"><a href="#cb1-484" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-485"><a href="#cb1-485" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]:</span>
-<span id="cb1-486"><a href="#cb1-486" aria-hidden="true" tabindex="-1"></a>    kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb1-487"><a href="#cb1-487" aria-hidden="true" tabindex="-1"></a>    labels <span class="op">=</span> kmeans.fit_predict(X_scaled)</span>
-<span id="cb1-488"><a href="#cb1-488" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> silhouette_score(X_scaled, labels)</span>
-<span id="cb1-489"><a href="#cb1-489" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"For k=</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">, the Silhouette Score is: </span><span class="sc">{</span>score<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb1-490"><a href="#cb1-490" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-491"><a href="#cb1-491" aria-hidden="true" tabindex="-1"></a><span class="al">![Silhouette score](images/silhouette%20score.png)</span></span>
-<span id="cb1-492"><a href="#cb1-492" aria-hidden="true" tabindex="-1"></a>While k=2 is the highest silhouette score, having only 2 clusters isn't going to be helpful.</span>
-<span id="cb1-493"><a href="#cb1-493" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-494"><a href="#cb1-494" aria-hidden="true" tabindex="-1"></a>Therefore, I will be using k=4 as the second highest score </span>
+<span id="cb1-460"><a href="#cb1-460" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop NaNs just for the clustering subset</span></span>
+<span id="cb1-461"><a href="#cb1-461" aria-hidden="true" tabindex="-1"></a>df_cluster <span class="op">=</span> final_df.dropna(subset<span class="op">=</span>cluster_features).copy()</span>
+<span id="cb1-462"><a href="#cb1-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-463"><a href="#cb1-463" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Scale the Data</span></span>
+<span id="cb1-464"><a href="#cb1-464" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb1-465"><a href="#cb1-465" aria-hidden="true" tabindex="-1"></a>X_scaled <span class="op">=</span> scaler.fit_transform(df_cluster[cluster_features])</span>
+<span id="cb1-466"><a href="#cb1-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-467"><a href="#cb1-467" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate "Inertia" for K=1 to K=10</span></span>
+<span id="cb1-468"><a href="#cb1-468" aria-hidden="true" tabindex="-1"></a>inertia <span class="op">=</span> []</span>
+<span id="cb1-469"><a href="#cb1-469" aria-hidden="true" tabindex="-1"></a>K_range <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb1-470"><a href="#cb1-470" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-471"><a href="#cb1-471" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> K_range:</span>
+<span id="cb1-472"><a href="#cb1-472" aria-hidden="true" tabindex="-1"></a>    kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb1-473"><a href="#cb1-473" aria-hidden="true" tabindex="-1"></a>    kmeans.fit(X_scaled)</span>
+<span id="cb1-474"><a href="#cb1-474" aria-hidden="true" tabindex="-1"></a>    inertia.append(kmeans.inertia_)</span>
+<span id="cb1-475"><a href="#cb1-475" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-476"><a href="#cb1-476" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the Elbow</span></span>
+<span id="cb1-477"><a href="#cb1-477" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb1-478"><a href="#cb1-478" aria-hidden="true" tabindex="-1"></a>plt.plot(K_range, inertia, <span class="st">'bo-'</span>)</span>
+<span id="cb1-479"><a href="#cb1-479" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Clusters (k)'</span>)</span>
+<span id="cb1-480"><a href="#cb1-480" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Inertia (Sum of Squared Distances)'</span>)</span>
+<span id="cb1-481"><a href="#cb1-481" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Elbow Method'</span>)</span>
+<span id="cb1-482"><a href="#cb1-482" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb1-483"><a href="#cb1-483" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb1-484"><a href="#cb1-484" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-485"><a href="#cb1-485" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-486"><a href="#cb1-486" aria-hidden="true" tabindex="-1"></a><span class="al">![K cluster](images/Elbow.png)</span></span>
+<span id="cb1-487"><a href="#cb1-487" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-488"><a href="#cb1-488" aria-hidden="true" tabindex="-1"></a>While the drop is great between cluster 1 and 2, it greatly decreases between 2 and 3 and 4. Too vague to fully tell which one to use</span>
+<span id="cb1-489"><a href="#cb1-489" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-492"><a href="#cb1-492" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb1-493"><a href="#cb1-493" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
+<span id="cb1-494"><a href="#cb1-494" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Silhouette Score"</span></span>
 <span id="cb1-495"><a href="#cb1-495" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-498"><a href="#cb1-498" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb1-499"><a href="#cb1-499" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
-<span id="cb1-500"><a href="#cb1-500" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "K=4"</span></span>
-<span id="cb1-501"><a href="#cb1-501" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-502"><a href="#cb1-502" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">4</span>  </span>
-<span id="cb1-503"><a href="#cb1-503" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-504"><a href="#cb1-504" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Fit the Model</span></span>
-<span id="cb1-505"><a href="#cb1-505" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb1-506"><a href="#cb1-506" aria-hidden="true" tabindex="-1"></a>df_cluster[<span class="st">'Cluster_Labels'</span>] <span class="op">=</span> kmeans.fit_predict(X_scaled)</span>
-<span id="cb1-507"><a href="#cb1-507" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-508"><a href="#cb1-508" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Merge labels back to main dataframe (if indices match)</span></span>
-<span id="cb1-509"><a href="#cb1-509" aria-hidden="true" tabindex="-1"></a>final_df[<span class="st">'Cluster'</span>] <span class="op">=</span> df_cluster[<span class="st">'Cluster_Labels'</span>]</span>
+<span id="cb1-496"><a href="#cb1-496" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> silhouette_score</span>
+<span id="cb1-497"><a href="#cb1-497" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-498"><a href="#cb1-498" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]:</span>
+<span id="cb1-499"><a href="#cb1-499" aria-hidden="true" tabindex="-1"></a>    kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb1-500"><a href="#cb1-500" aria-hidden="true" tabindex="-1"></a>    labels <span class="op">=</span> kmeans.fit_predict(X_scaled)</span>
+<span id="cb1-501"><a href="#cb1-501" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> silhouette_score(X_scaled, labels)</span>
+<span id="cb1-502"><a href="#cb1-502" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"For k=</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">, the Silhouette Score is: </span><span class="sc">{</span>score<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb1-503"><a href="#cb1-503" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-504"><a href="#cb1-504" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-505"><a href="#cb1-505" aria-hidden="true" tabindex="-1"></a><span class="al">![Silhouette score](images/silhouette%20score.png)</span></span>
+<span id="cb1-506"><a href="#cb1-506" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-507"><a href="#cb1-507" aria-hidden="true" tabindex="-1"></a>While k=2 is the highest silhouette score, having only 2 clusters isn't going to be helpful.</span>
+<span id="cb1-508"><a href="#cb1-508" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-509"><a href="#cb1-509" aria-hidden="true" tabindex="-1"></a>Therefore, I will be using k=4 as the second highest score </span>
 <span id="cb1-510"><a href="#cb1-510" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-511"><a href="#cb1-511" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. INTERPRET: What does each cluster represent?</span></span>
-<span id="cb1-512"><a href="#cb1-512" aria-hidden="true" tabindex="-1"></a><span class="co"># We group by Cluster and calculate the mean of each feature</span></span>
-<span id="cb1-513"><a href="#cb1-513" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> df_cluster.groupby(<span class="st">'Cluster_Labels'</span>)[cluster_features].mean()</span>
-<span id="cb1-514"><a href="#cb1-514" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-515"><a href="#cb1-515" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a count to see how many tracts are in each cluster</span></span>
-<span id="cb1-516"><a href="#cb1-516" aria-hidden="true" tabindex="-1"></a>summary[<span class="st">'Count'</span>] <span class="op">=</span> df_cluster[<span class="st">'Cluster_Labels'</span>].value_counts()</span>
-<span id="cb1-517"><a href="#cb1-517" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-518"><a href="#cb1-518" aria-hidden="true" tabindex="-1"></a><span class="co"># Add 'Noise_dBA' for easier reading if you created it earlier</span></span>
-<span id="cb1-519"><a href="#cb1-519" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Log_Noise_Exposure'</span> <span class="kw">in</span> summary.columns:</span>
-<span id="cb1-520"><a href="#cb1-520" aria-hidden="true" tabindex="-1"></a>    summary[<span class="st">'Noise_dBA'</span>] <span class="op">=</span> np.exp(summary[<span class="st">'Log_Noise_Exposure'</span>])</span>
-<span id="cb1-521"><a href="#cb1-521" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-522"><a href="#cb1-522" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"--- CLUSTER PROFILES (Mean Values) ---"</span>)</span>
-<span id="cb1-523"><a href="#cb1-523" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summary.<span class="bu">round</span>(<span class="dv">2</span>).T) </span>
-<span id="cb1-524"><a href="#cb1-524" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-525"><a href="#cb1-525" aria-hidden="true" tabindex="-1"></a><span class="al">![cluster](images/4cluster.png)</span></span>
-<span id="cb1-526"><a href="#cb1-526" aria-hidden="true" tabindex="-1"></a>Cluster 0: Highest noise, lowest income/education. oldest pop, and white</span>
-<span id="cb1-527"><a href="#cb1-527" aria-hidden="true" tabindex="-1"></a>(low income, old, white pop with high noise)</span>
-<span id="cb1-528"><a href="#cb1-528" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-529"><a href="#cb1-529" aria-hidden="true" tabindex="-1"></a>Cluster 1: average across the board</span>
-<span id="cb1-530"><a href="#cb1-530" aria-hidden="true" tabindex="-1"></a>(middle ground)</span>
-<span id="cb1-531"><a href="#cb1-531" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-532"><a href="#cb1-532" aria-hidden="true" tabindex="-1"></a>Cluster 2: Highest income, high education, relatively high noise, very diverse, and pop density</span>
-<span id="cb1-533"><a href="#cb1-533" aria-hidden="true" tabindex="-1"></a>(major urban center with wealthy educated and diverse people, still high noise)</span>
-<span id="cb1-534"><a href="#cb1-534" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-535"><a href="#cb1-535" aria-hidden="true" tabindex="-1"></a>Cluster 3: Lowest noice, highest education</span>
-<span id="cb1-536"><a href="#cb1-536" aria-hidden="true" tabindex="-1"></a>(Wealthy highly educated suburbs with little noise stress)</span>
-<span id="cb1-537"><a href="#cb1-537" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-538"><a href="#cb1-538" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Boxplot</span></span>
-<span id="cb1-541"><a href="#cb1-541" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb1-542"><a href="#cb1-542" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
-<span id="cb1-543"><a href="#cb1-543" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "cluster box"</span></span>
-<span id="cb1-544"><a href="#cb1-544" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-545"><a href="#cb1-545" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot of Depression by Cluster</span></span>
-<span id="cb1-546"><a href="#cb1-546" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb1-547"><a href="#cb1-547" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">'Cluster'</span>, y<span class="op">=</span><span class="st">'Depression among adults'</span>, data<span class="op">=</span>final_df, palette<span class="op">=</span><span class="st">'Set2'</span>)</span>
-<span id="cb1-548"><a href="#cb1-548" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Depression Prevalence by Neighborhood Cluster'</span>)</span>
-<span id="cb1-549"><a href="#cb1-549" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Depression %'</span>)</span>
-<span id="cb1-550"><a href="#cb1-550" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Cluster Label'</span>)</span>
-<span id="cb1-551"><a href="#cb1-551" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb1-552"><a href="#cb1-552" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-553"><a href="#cb1-553" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot of cholestrol by Cluster</span></span>
-<span id="cb1-554"><a href="#cb1-554" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb1-555"><a href="#cb1-555" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">'Cluster'</span>, y<span class="op">=</span><span class="st">'High cholesterol among adults who have ever been screened'</span>, data<span class="op">=</span>final_df, palette<span class="op">=</span><span class="st">'Set2'</span>)</span>
-<span id="cb1-556"><a href="#cb1-556" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Cholesterol Prevalence by Neighborhood Cluster'</span>)</span>
-<span id="cb1-557"><a href="#cb1-557" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Cholesterol Prevalence'</span>)</span>
-<span id="cb1-558"><a href="#cb1-558" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Cluster Label'</span>)</span>
-<span id="cb1-559"><a href="#cb1-559" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb1-560"><a href="#cb1-560" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-513"><a href="#cb1-513" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb1-514"><a href="#cb1-514" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
+<span id="cb1-515"><a href="#cb1-515" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "K=4"</span></span>
+<span id="cb1-516"><a href="#cb1-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-517"><a href="#cb1-517" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">4</span>  </span>
+<span id="cb1-518"><a href="#cb1-518" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-519"><a href="#cb1-519" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Fit the Model</span></span>
+<span id="cb1-520"><a href="#cb1-520" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb1-521"><a href="#cb1-521" aria-hidden="true" tabindex="-1"></a>df_cluster[<span class="st">'Cluster_Labels'</span>] <span class="op">=</span> kmeans.fit_predict(X_scaled)</span>
+<span id="cb1-522"><a href="#cb1-522" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-523"><a href="#cb1-523" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Merge labels back to main dataframe (if indices match)</span></span>
+<span id="cb1-524"><a href="#cb1-524" aria-hidden="true" tabindex="-1"></a>final_df[<span class="st">'Cluster'</span>] <span class="op">=</span> df_cluster[<span class="st">'Cluster_Labels'</span>]</span>
+<span id="cb1-525"><a href="#cb1-525" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-526"><a href="#cb1-526" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. INTERPRET: What does each cluster represent?</span></span>
+<span id="cb1-527"><a href="#cb1-527" aria-hidden="true" tabindex="-1"></a><span class="co"># We group by Cluster and calculate the mean of each feature</span></span>
+<span id="cb1-528"><a href="#cb1-528" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> df_cluster.groupby(<span class="st">'Cluster_Labels'</span>)[cluster_features].mean()</span>
+<span id="cb1-529"><a href="#cb1-529" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-530"><a href="#cb1-530" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a count to see how many tracts are in each cluster</span></span>
+<span id="cb1-531"><a href="#cb1-531" aria-hidden="true" tabindex="-1"></a>summary[<span class="st">'Count'</span>] <span class="op">=</span> df_cluster[<span class="st">'Cluster_Labels'</span>].value_counts()</span>
+<span id="cb1-532"><a href="#cb1-532" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-533"><a href="#cb1-533" aria-hidden="true" tabindex="-1"></a><span class="co"># Add 'Noise_dBA' for easier reading if you created it earlier</span></span>
+<span id="cb1-534"><a href="#cb1-534" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'Log_Noise_Exposure'</span> <span class="kw">in</span> summary.columns:</span>
+<span id="cb1-535"><a href="#cb1-535" aria-hidden="true" tabindex="-1"></a>    summary[<span class="st">'Noise_dBA'</span>] <span class="op">=</span> np.exp(summary[<span class="st">'Log_Noise_Exposure'</span>])</span>
+<span id="cb1-536"><a href="#cb1-536" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-537"><a href="#cb1-537" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"--- CLUSTER PROFILES (Mean Values) ---"</span>)</span>
+<span id="cb1-538"><a href="#cb1-538" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summary.<span class="bu">round</span>(<span class="dv">2</span>).T) </span>
+<span id="cb1-539"><a href="#cb1-539" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-540"><a href="#cb1-540" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-541"><a href="#cb1-541" aria-hidden="true" tabindex="-1"></a><span class="al">![cluster](images/4cluster.png)</span></span>
+<span id="cb1-542"><a href="#cb1-542" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-543"><a href="#cb1-543" aria-hidden="true" tabindex="-1"></a>Cluster 0: Highest noise, lowest income/education. oldest pop, and white</span>
+<span id="cb1-544"><a href="#cb1-544" aria-hidden="true" tabindex="-1"></a>(low income, old, white pop with high noise)</span>
+<span id="cb1-545"><a href="#cb1-545" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-546"><a href="#cb1-546" aria-hidden="true" tabindex="-1"></a>Cluster 1: average across the board</span>
+<span id="cb1-547"><a href="#cb1-547" aria-hidden="true" tabindex="-1"></a>(middle ground)</span>
+<span id="cb1-548"><a href="#cb1-548" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-549"><a href="#cb1-549" aria-hidden="true" tabindex="-1"></a>Cluster 2: Highest income, high education, relatively high noise, very diverse, and pop density</span>
+<span id="cb1-550"><a href="#cb1-550" aria-hidden="true" tabindex="-1"></a>(major urban center with wealthy educated and diverse people, still high noise)</span>
+<span id="cb1-551"><a href="#cb1-551" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-552"><a href="#cb1-552" aria-hidden="true" tabindex="-1"></a>Cluster 3: Lowest noice, highest education</span>
+<span id="cb1-553"><a href="#cb1-553" aria-hidden="true" tabindex="-1"></a>(Wealthy highly educated suburbs with little noise stress)</span>
+<span id="cb1-554"><a href="#cb1-554" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-555"><a href="#cb1-555" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Boxplot</span></span>
+<span id="cb1-558"><a href="#cb1-558" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb1-559"><a href="#cb1-559" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
+<span id="cb1-560"><a href="#cb1-560" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "cluster box"</span></span>
 <span id="cb1-561"><a href="#cb1-561" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-562"><a href="#cb1-562" aria-hidden="true" tabindex="-1"></a><span class="al">![cluster Graph](images/cluster_graph.png)</span></span>
-<span id="cb1-563"><a href="#cb1-563" aria-hidden="true" tabindex="-1"></a><span class="al">![cluster Cholesterol](images/cluster_cholesterol.png.png)</span></span>
-<span id="cb1-564"><a href="#cb1-564" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-565"><a href="#cb1-565" aria-hidden="true" tabindex="-1"></a>Cluster 2: low depression and high cholestrol. (wealthy, diverse, and living in high density and high noise environments. They don't report feeling depressed but they have the highest cholesterol showing worst physiological stress indicators.)</span>
-<span id="cb1-566"><a href="#cb1-566" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-567"><a href="#cb1-567" aria-hidden="true" tabindex="-1"></a>Cluster 3: low cholestrol but high depression (has the quiet but bad mental health. Could be that they are accustomed to quiet environments, that they have a lower threshold for noise causing them distress.)</span>
-<span id="cb1-568"><a href="#cb1-568" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-569"><a href="#cb1-569" aria-hidden="true" tabindex="-1"></a>Cluster 0: low income, older, and high noise exposer. They get hit with everythihng </span>
-<span id="cb1-570"><a href="#cb1-570" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-573"><a href="#cb1-573" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb1-574"><a href="#cb1-574" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
-<span id="cb1-575"><a href="#cb1-575" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "map cluster"</span></span>
-<span id="cb1-576"><a href="#cb1-576" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-577"><a href="#cb1-577" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> contextily <span class="im">as</span> ctx</span>
+<span id="cb1-562"><a href="#cb1-562" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot of Depression by Cluster</span></span>
+<span id="cb1-563"><a href="#cb1-563" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb1-564"><a href="#cb1-564" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">'Cluster'</span>, y<span class="op">=</span><span class="st">'Depression among adults'</span>, data<span class="op">=</span>final_df, palette<span class="op">=</span><span class="st">'Set2'</span>)</span>
+<span id="cb1-565"><a href="#cb1-565" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Depression Prevalence by Neighborhood Cluster'</span>)</span>
+<span id="cb1-566"><a href="#cb1-566" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Depression %'</span>)</span>
+<span id="cb1-567"><a href="#cb1-567" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Cluster Label'</span>)</span>
+<span id="cb1-568"><a href="#cb1-568" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb1-569"><a href="#cb1-569" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-570"><a href="#cb1-570" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot of cholestrol by Cluster</span></span>
+<span id="cb1-571"><a href="#cb1-571" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb1-572"><a href="#cb1-572" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">'Cluster'</span>, y<span class="op">=</span><span class="st">'High cholesterol among adults who have ever been screened'</span>, data<span class="op">=</span>final_df, palette<span class="op">=</span><span class="st">'Set2'</span>)</span>
+<span id="cb1-573"><a href="#cb1-573" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Cholesterol Prevalence by Neighborhood Cluster'</span>)</span>
+<span id="cb1-574"><a href="#cb1-574" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Cholesterol Prevalence'</span>)</span>
+<span id="cb1-575"><a href="#cb1-575" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Cluster Label'</span>)</span>
+<span id="cb1-576"><a href="#cb1-576" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb1-577"><a href="#cb1-577" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-578"><a href="#cb1-578" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-579"><a href="#cb1-579" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure final_df is a GeoDataFrame</span></span>
-<span id="cb1-580"><a href="#cb1-580" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">hasattr</span>(final_df, <span class="st">'plot'</span>):</span>
-<span id="cb1-581"><a href="#cb1-581" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">10</span>))</span>
-<span id="cb1-582"><a href="#cb1-582" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-583"><a href="#cb1-583" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot clusters</span></span>
-<span id="cb1-584"><a href="#cb1-584" aria-hidden="true" tabindex="-1"></a>    final_df.plot(column<span class="op">=</span><span class="st">'Cluster'</span>, </span>
-<span id="cb1-585"><a href="#cb1-585" aria-hidden="true" tabindex="-1"></a>                  categorical<span class="op">=</span><span class="va">True</span>, </span>
-<span id="cb1-586"><a href="#cb1-586" aria-hidden="true" tabindex="-1"></a>                  legend<span class="op">=</span><span class="va">True</span>, </span>
-<span id="cb1-587"><a href="#cb1-587" aria-hidden="true" tabindex="-1"></a>                  cmap<span class="op">=</span><span class="st">'tab10'</span>, </span>
-<span id="cb1-588"><a href="#cb1-588" aria-hidden="true" tabindex="-1"></a>                  ax<span class="op">=</span>ax,</span>
-<span id="cb1-589"><a href="#cb1-589" aria-hidden="true" tabindex="-1"></a>                  alpha<span class="op">=</span><span class="fl">0.6</span>,</span>
-<span id="cb1-590"><a href="#cb1-590" aria-hidden="true" tabindex="-1"></a>                  edgecolor<span class="op">=</span><span class="st">'white'</span>,</span>
-<span id="cb1-591"><a href="#cb1-591" aria-hidden="true" tabindex="-1"></a>                  linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb1-592"><a href="#cb1-592" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb1-593"><a href="#cb1-593" aria-hidden="true" tabindex="-1"></a>        ctx.add_basemap(ax, crs<span class="op">=</span>final_df.crs.to_string())</span>
-<span id="cb1-594"><a href="#cb1-594" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
-<span id="cb1-595"><a href="#cb1-595" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
-<span id="cb1-596"><a href="#cb1-596" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-597"><a href="#cb1-597" aria-hidden="true" tabindex="-1"></a>    ax.set_axis_off()</span>
-<span id="cb1-598"><a href="#cb1-598" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'Neighborhood Typologies (K-Means Clustering, k=</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">)'</span>)</span>
-<span id="cb1-599"><a href="#cb1-599" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
-<span id="cb1-600"><a href="#cb1-600" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb1-601"><a href="#cb1-601" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"final_df is not a GeoDataFrame. Skipping map."</span>)</span>
-<span id="cb1-602"><a href="#cb1-602" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-603"><a href="#cb1-603" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-604"><a href="#cb1-604" aria-hidden="true" tabindex="-1"></a><span class="al">![map](images/cluster_map.png)</span></span>
-<span id="cb1-605"><a href="#cb1-605" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-606"><a href="#cb1-606" aria-hidden="true" tabindex="-1"></a>Based on the box plots and spatial analysis, these findings reveal a striking "Paradox of Place" where psychological well-being and physiological health are inversely related across neighborhood types.</span>
-<span id="cb1-607"><a href="#cb1-607" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-608"><a href="#cb1-608" aria-hidden="true" tabindex="-1"></a>Cluster 2 (The Cosmopolitan Core) presents the most compelling contradiction: residents here report the lowest rates of depression (~15%) yet suffer from the highest rates of high cholesterol (~36%). This suggests a "Cosmopolitan Buffer," where the economic opportunities, social vibrancy, and amenities of dense urban living protect mental health, causing residents to psychologically "discount" the environmental stressors. However, their bodies still keep the score—the high noise and density create a hidden physiological tax (allostatic load) that manifests as high cholesterol, even if they don't feel "stressed."</span>
-<span id="cb1-609"><a href="#cb1-609" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-610"><a href="#cb1-610" aria-hidden="true" tabindex="-1"></a>Conversely, Cluster 3 (The Quiet Elite) shows the exact opposite pattern: they have the lowest cholesterol (indicating good physical health and protective resources) but the highest reported depression (~24%). This supports the "Expectation of Quiet" hypothesis; residents in these privileged, lower-noise areas may be more sensitive to environmental disturbances or suffer from suburban isolation, leading to higher reported mental distress despite their physical safety. Meanwhile, Cluster 0 (The Vulnerable Periphery) lacks the protective buffers of either group, showing moderately high levels of both depression and cholesterol, reflecting the compounding burdens of lower socioeconomic status and environmental exposure.</span>
+<span id="cb1-579"><a href="#cb1-579" aria-hidden="true" tabindex="-1"></a><span class="al">![cluster Graph](images/cluster_graph.png)</span></span>
+<span id="cb1-580"><a href="#cb1-580" aria-hidden="true" tabindex="-1"></a><span class="al">![cluster Cholesterol](images/cluster_cholesterol.png.png)</span></span>
+<span id="cb1-581"><a href="#cb1-581" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-582"><a href="#cb1-582" aria-hidden="true" tabindex="-1"></a>Cluster 2: low depression and high cholestrol. (wealthy, diverse, and living in high density and high noise environments. They don't report feeling depressed but they have the highest cholesterol showing worst physiological stress indicators.)</span>
+<span id="cb1-583"><a href="#cb1-583" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-584"><a href="#cb1-584" aria-hidden="true" tabindex="-1"></a>Cluster 3: low cholestrol but high depression (has the quiet but bad mental health. Could be that they are accustomed to quiet environments, that they have a lower threshold for noise causing them distress.)</span>
+<span id="cb1-585"><a href="#cb1-585" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-586"><a href="#cb1-586" aria-hidden="true" tabindex="-1"></a>Cluster 0: low income, older, and high noise exposer. They get hit with everythihng </span>
+<span id="cb1-587"><a href="#cb1-587" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-590"><a href="#cb1-590" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb1-591"><a href="#cb1-591" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
+<span id="cb1-592"><a href="#cb1-592" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "map cluster"</span></span>
+<span id="cb1-593"><a href="#cb1-593" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-594"><a href="#cb1-594" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> contextily <span class="im">as</span> ctx</span>
+<span id="cb1-595"><a href="#cb1-595" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-596"><a href="#cb1-596" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure final_df is a GeoDataFrame</span></span>
+<span id="cb1-597"><a href="#cb1-597" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">hasattr</span>(final_df, <span class="st">'plot'</span>):</span>
+<span id="cb1-598"><a href="#cb1-598" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">10</span>))</span>
+<span id="cb1-599"><a href="#cb1-599" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-600"><a href="#cb1-600" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot clusters</span></span>
+<span id="cb1-601"><a href="#cb1-601" aria-hidden="true" tabindex="-1"></a>    final_df.plot(column<span class="op">=</span><span class="st">'Cluster'</span>, </span>
+<span id="cb1-602"><a href="#cb1-602" aria-hidden="true" tabindex="-1"></a>                  categorical<span class="op">=</span><span class="va">True</span>, </span>
+<span id="cb1-603"><a href="#cb1-603" aria-hidden="true" tabindex="-1"></a>                  legend<span class="op">=</span><span class="va">True</span>, </span>
+<span id="cb1-604"><a href="#cb1-604" aria-hidden="true" tabindex="-1"></a>                  cmap<span class="op">=</span><span class="st">'tab10'</span>, </span>
+<span id="cb1-605"><a href="#cb1-605" aria-hidden="true" tabindex="-1"></a>                  ax<span class="op">=</span>ax,</span>
+<span id="cb1-606"><a href="#cb1-606" aria-hidden="true" tabindex="-1"></a>                  alpha<span class="op">=</span><span class="fl">0.6</span>,</span>
+<span id="cb1-607"><a href="#cb1-607" aria-hidden="true" tabindex="-1"></a>                  edgecolor<span class="op">=</span><span class="st">'white'</span>,</span>
+<span id="cb1-608"><a href="#cb1-608" aria-hidden="true" tabindex="-1"></a>                  linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb1-609"><a href="#cb1-609" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb1-610"><a href="#cb1-610" aria-hidden="true" tabindex="-1"></a>        ctx.add_basemap(ax, crs<span class="op">=</span>final_df.crs.to_string())</span>
+<span id="cb1-611"><a href="#cb1-611" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
+<span id="cb1-612"><a href="#cb1-612" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb1-613"><a href="#cb1-613" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-614"><a href="#cb1-614" aria-hidden="true" tabindex="-1"></a>    ax.set_axis_off()</span>
+<span id="cb1-615"><a href="#cb1-615" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'Neighborhood Typologies (K-Means Clustering, k=</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">)'</span>)</span>
+<span id="cb1-616"><a href="#cb1-616" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb1-617"><a href="#cb1-617" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb1-618"><a href="#cb1-618" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"final_df is not a GeoDataFrame. Skipping map."</span>)</span>
+<span id="cb1-619"><a href="#cb1-619" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-620"><a href="#cb1-620" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-621"><a href="#cb1-621" aria-hidden="true" tabindex="-1"></a><span class="al">![map](images/cluster_map.png)</span></span>
+<span id="cb1-622"><a href="#cb1-622" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-623"><a href="#cb1-623" aria-hidden="true" tabindex="-1"></a>Based on the box plots and spatial analysis, these findings reveal a striking "Paradox of Place" where psychological well-being and physiological health are inversely related across neighborhood types.</span>
+<span id="cb1-624"><a href="#cb1-624" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-625"><a href="#cb1-625" aria-hidden="true" tabindex="-1"></a>Cluster 2 (The Cosmopolitan Core) presents the most compelling contradiction: residents here report the lowest rates of depression (~15%) yet suffer from the highest rates of high cholesterol (~36%). This suggests a "Cosmopolitan Buffer," where the economic opportunities, social vibrancy, and amenities of dense urban living protect mental health, causing residents to psychologically "discount" the environmental stressors. However, their bodies still keep the score—the high noise and density create a hidden physiological tax (allostatic load) that manifests as high cholesterol, even if they don't feel "stressed."</span>
+<span id="cb1-626"><a href="#cb1-626" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-627"><a href="#cb1-627" aria-hidden="true" tabindex="-1"></a>Conversely, Cluster 3 (The Quiet Elite) shows the exact opposite pattern: they have the lowest cholesterol (indicating good physical health and protective resources) but the highest reported depression (~24%). This supports the "Expectation of Quiet" hypothesis; residents in these privileged, lower-noise areas may be more sensitive to environmental disturbances or suffer from suburban isolation, leading to higher reported mental distress despite their physical safety. Meanwhile, Cluster 0 (The Vulnerable Periphery) lacks the protective buffers of either group, showing moderately high levels of both depression and cholesterol, reflecting the compounding burdens of lower socioeconomic status and environmental exposure.</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

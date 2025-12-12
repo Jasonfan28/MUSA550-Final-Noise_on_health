@@ -162,7 +162,9 @@ vif_data["VIF"] = [variance_inflation_factor(X_vif.values, i)
 vif_display = vif_data[vif_data["Feature"] != 'const'].sort_values('VIF', ascending=False)
 print(vif_display)
 ```
+
 ![mid vif](images/mid_vif.png)
+
 While Log_income has a VIF above 5, I'll be getting rid of something that might be correlated to the income such as poverty. This is due to income showing a lot more about a place such as being wealthy or not, while poverty only shows one statistic. 
 ```{python}
 #| eval: false 
@@ -185,7 +187,9 @@ vif_data["VIF"] = [variance_inflation_factor(X_vif.values, i)
 vif_display = vif_data[vif_data["Feature"] != 'const'].sort_values('VIF', ascending=False)
 print(vif_display)
 ```
+
 ![Final VIF](images/good_vif.png)
+
 Now all VIF is below 5 showing no multicollinearity, meaning that each variables are completely independent of each other. 
 
 ### P Value Test
@@ -237,7 +241,9 @@ for outcome_var in outcomes_of_interest:
     except Exception as e:
         print(f"Error running regression for {outcome_var}: {e}")
 ```
+
 Found very little significance, with p-values all being high, and a large amount of multicollinearity. Therefore, I started to look for potential interaction terms. The assumption for these results is due to socioeconomic variables having too much correlation. 
+
 ```{python}
 #| eval: false 
 #| code-summary: "P value"
@@ -276,6 +282,7 @@ for outcome in ['Depression among adults']:
         else:
             print("Interaction not significant.")
 ```
+
 ![interaction model](images/Interaction%20model.png)
 
 #### Inital Assumption:
@@ -391,13 +398,16 @@ plt.ylabel('Depression Prevalence (%)')
 plt.grid(True, alpha=0.3)
 plt.show()
 ```
+
 ![Interaction between noise and depression](images/noise_depression.png)
+
 #### Impact of noise on depression accounting for education level:
 * Relative Deprivation: Higher socioeconomic standard individuals may feel more "entitled" to quiet environments. When that expectation is violated, the psychological toll (annoyance, frustration, depression) is higher.
 
 * Awareness vs. Survival: Lower socioeconomic standard populations often face a "hierarchy of needs" where immediate stressors (financial instability, food security, crime) outweigh environmental noise. They may "tune out" the noise psychologically because it is just one of many stressors, resulting in lower reported noise-related depression, even if the noise is high.
 
 ![Interaction between noise and cholesterol](images/noise_choles.png)
+
 #### Impact of noise on cholesterol accounting for education level:
 * The Body Keeps the Score: Even if lower-education populations do not report higher depression, their bodies are biologically reacting to the noise stressor. The noise is triggering cortisol production and raising cholesterol, regardless of their conscious "acceptance" of the noise.
 
@@ -405,6 +415,7 @@ plt.show()
 
 ### Cluster Analysis
 Conducted cluster analysis to see the spatial split of how these factors impact specific communities. 
+
 ```{python}
 #| eval: false 
 #| code-summary: "P value"
@@ -453,7 +464,9 @@ plt.title('Elbow Method')
 plt.grid(True)
 plt.show()
 ```
+
 ![K cluster](images/Elbow.png)
+
 While the drop is great between cluster 1 and 2, it greatly decreases between 2 and 3 and 4. Too vague to fully tell which one to use
 
 ```{python}
@@ -468,7 +481,9 @@ for k in [2, 3, 4, 5]:
     score = silhouette_score(X_scaled, labels)
     print(f"For k={k}, the Silhouette Score is: {score:.3f}")
 ```
+
 ![Silhouette score](images/silhouette%20score.png)
+
 While k=2 is the highest silhouette score, having only 2 clusters isn't going to be helpful.
 
 Therefore, I will be using k=4 as the second highest score 
@@ -500,7 +515,9 @@ if 'Log_Noise_Exposure' in summary.columns:
 print("--- CLUSTER PROFILES (Mean Values) ---")
 print(summary.round(2).T) 
 ```
+
 ![cluster](images/4cluster.png)
+
 Cluster 0: Highest noise, lowest income/education. oldest pop, and white
 (low income, old, white pop with high noise)
 
