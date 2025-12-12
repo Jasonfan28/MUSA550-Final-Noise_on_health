@@ -1,0 +1,324 @@
+---
+title: "Data Analysis Process"
+execute:
+    warning: false
+    message: false
+    echo: false
+---
+
+## 1. Environment Setup & Configuration
+
+We start by importing the necessary libraries for geospatial analysis and machine learning.
+```{python}
+#| eval: false 
+#| code-summary: "Importing Libraries"
+import os
+import glob
+import numpy as np
+import pandas as pd
+import geopandas as gpd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import rasterio
+import subprocess
+import fiona
+from rasterstats import zonal_stats
+from sodapy import Socrata
+from shapely.geometry import shape
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression, Ridge
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import r2_score
+from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+import warnings
+
+pd.set_option('display.max_columns', None)
+warnings.filterwarnings('ignore')
+sns.set_style("whitegrid")
+```
+
+## 2. Data Gathering
+
+### Processing Noise Raster Data
+
+The National Transportation Noise Map is provided as individual high-resolution TIFF files for each state. To analyze the Northeast as a contiguous region, I needed to merge these into a single mosaic.
+
+Because the uncompressed raster data exceeds 50GB, merging them into a physical file is inefficient and computationally expensive. Instead, I utilized GDAL to build a Virtual Raster (VRT). A VRT acts as a pointer file that treats the collection of state rasters as a single seamless map without duplicating the underlying data.
+
+```{python}
+#| label: noise-processing
+#| eval: false
+#| code-summary: "VRT Construction Code"
+
+import os
+data_dir = "data/CONUS_rail_road_and_aviation_noise_2020/State_rasters/"
+search_pattern = os.path.join(data_dir, "*_rail_road_and_aviation_noise_2020.tif")
+output_vrt = os.path.join(data_dir, "CONUS_merged_noise_map_2020.vrt")
+
+tif_files = glob.glob(search_pattern)
+
+if not tif_files:
+    print(f"--- ERROR ---")
+    print(f"No .tif files were found at: {search_pattern}")
+else:
+    print(f"Found {len(tif_files)} state raster files to link.")
+    
+    command_list = ["gdalbuildvrt", output_vrt] + tif_files
+    
+    print("Building VRT file...")
+    
+    try:
+        subprocess.run(command_list, check=True, shell=True)
+        
+        print(f"\n--- Success! ---")
+        print(f"Virtual Raster .vrt file created at:")
+        print(output_vrt)
+        
+    except subprocess.CalledProcessError as e:
+        print(f"\n--- GDAL ERROR ---")
+        print(f"The command failed: {e}")
+        print("Please ensure GDAL is installed in your active Conda environment.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+data_dir = "data/CONUS_rail_road_and_aviation_noise_2020/State_rasters/"
+NOISE_RASTER_PATH = os.path.join(data_dir, "CONUS_merged_noise_map_2020.vrt")
+CDC_APP_TOKEN = "ReEZWmd3hqYSQ879UCZyhtP1T" 
+```
+
+### Data Ingestion Pipeline
+
+To streamline the process, I created a **DataPipeline** class. This class handles the connection to the CDC API, downloads county boundaries, and manages the noise raster file paths.
+
+```{python}
+#| label: pipeline-class
+#| eval: false
+
+class DataPipeline:
+    def __init__(self, cdc_token, noise_path):
+        self.cdc_token = cdc_token
+        self.noise_path = noise_path
+        self.NE_STATES = ['PA', 'NJ', 'NY', 'CT', 'RI', 'MA', 'NH', 'VT', 'ME']
+
+    def get_cdc_data(self, limit=50000):
+        client = Socrata("data.cdc.gov", self.cdc_token)
+        dataset_id = "swc5-untb"
+        results = client.get(dataset_id, limit=limit)
+        
+        gdf = gpd.GeoDataFrame.from_records(results)
+        
+        # Geometry processing
+        gdf = gdf.dropna(subset=['geolocation'])
+        gdf['geometry'] = gdf['geolocation'].apply(lambda x: shape(x))
+        gdf = gdf.set_geometry('geometry', crs="EPSG:4326")
+        
+        # Filter for NE States
+        gdf = gdf[gdf['stateabbr'].isin(self.NE_STATES)]
+        
+        # Numeric conversion
+        gdf['data_value'] = pd.to_numeric(gdf['data_value'], errors='coerce')
+        return gdf
+
+    def get_counties(self):
+        url = "https://www2.census.gov/geo/tiger/TIGER2022/COUNTY/tl_2022_us_county.zip"
+        counties = gpd.read_file(url)
+        counties = counties.to_crs("EPSG:4326")
+        
+        # Create FIPS
+        counties['FIPS'] = counties['STATEFP'] + counties['COUNTYFP']
+        return counties[['FIPS', 'geometry']]
+```
+
+### Utility Functions
+
+We also defined helper functions for multicollinearity checks (VIF) and correlation plotting.
+
+```{python}
+#| label: utility-function
+#| eval: false
+#| code-summary: "Helper Functions"
+
+def calculate_vif(df):
+    df = df.replace([np.inf, -np.inf], np.nan).dropna()
+    vif_data = pd.DataFrame()
+    vif_data["feature"] = df.columns
+    vif_data["VIF"] = [variance_inflation_factor(df.values, i) for i in range(len(df.columns))]
+    return vif_data.sort_values('VIF', ascending=False)
+
+def plot_correlation_matrix(df, title="Correlation Matrix"):
+    plt.figure(figsize=(10, 8))
+    corr = df.corr()
+    mask = np.triu(np.ones_like(corr, dtype=bool))
+    sns.heatmap(corr, mask=mask, cmap='RdBu_r', center=0, square=True, linewidths=.5)
+    plt.title(title, fontsize=14)
+    plt.tight_layout()
+    plt.show()
+
+# Initialize Pipeline
+pipeline = DataPipeline(CDC_APP_TOKEN, NOISE_RASTER_PATH)
+```
+
+
+### Loading the Data
+
+Note: Since API calls and spatial joins are computationally expensive, the code below demonstrates the logic used. For this website report, we load the pre-processed GeoJSON files directly.
+
+```{python}
+#| eval: false
+#| code-summary: "Data Loading Logic"
+
+cdc_gdf = pipeline.get_cdc_data(limit=250000)
+counties_gdf = pipeline.get_counties()
+
+# Pivot CDC Data (Wide Format)
+print("Pivoting CDC data...")
+health_pivot = cdc_gdf.pivot_table(
+    index=['locationid', 'locationname', 'stateabbr'],
+    columns='measure',
+    values='data_value',
+    aggfunc='mean'
+).reset_index()
+
+# Merge with Geometries
+model_gdf = counties_gdf.merge(health_pivot, left_on='FIPS', right_on='locationid', how='inner')
+
+model_gdf = model_gdf.set_geometry('geometry')
+```
+
+### Fetching Census Socioeconomic Data
+
+We target the **2023 American Community Survey (ACS) 5-Year Estimates** for this analysis. The 5-year estimates are preferred over 1-year data for this project because they provide higher statistical precision for areas with smaller populations, smoothing out annual volatility in rural counties. We specifically query variables that serve as robust proxies for Social Determinants of Health (SDOH):
+
+* **Economic Stability:** `Median_Income` and `Poverty_Count` are variables which measure community wealth and economic deprivation. Low-income communities often face higher exposure to environmental stressors and have fewer resources to mitigate them (e.g., soundproofing, healthcare access).
+* **Environmental Justice:** `White_Count`, `Asian_Count`,`Hispanic_Count`, and `Black_Count` are included to test for potential disparities in noise exposure. Environmental justice literature suggests that transportation infrastructure is disproportionately sited near communities of color. `Senior_Count` also looks at if older adults are more impacted by noise and health outcomes. 
+* **Education:** `Bachelor_Degree_Count` is included as educational attainment is a strong predictor of health literacy and overall socioeconomic status, often providing explanatory power beyond income alone.
+
+```{python}
+#| eval: false 
+#| code-summary: "Census API Logic"
+
+
+def fetch_census_data_standalone():
+    """
+    Fetches 2023 ACS 5-Year Data via US Census API for Northeast States.
+    Returns a cleaned DataFrame ready for merging.
+    """
+    print("Fetching US Census ACS Data (Income, Poverty, Race, Education)...")
+    
+    # NE State FIPS: CT, ME, MA, NH, NJ, NY, PA, RI, VT
+    ne_fips = ["09", "23", "25", "33", "34", "36", "42", "44", "50"]
+    
+    # Map API variables to readable names
+    vars_map = {
+        "B01003_001E": "Total_Pop",
+        "B19013_001E": "Median_Income",
+        "B17001_002E": "Poverty_Count",
+        "B03002_003E": "White_Count",
+        "B03002_004E": "Black_Count",
+        "B03002_006E": "Asian_Count",
+        "B03002_012E": "Hispanic_Count",
+        "B15003_022E": "Bachelor_Degree_Count",
+        "B09020_001E": "Senior_Count"
+    }
+    
+    var_string = ",".join(vars_map.keys())
+    dfs = []
+    
+  
+    for fips in ne_fips:
+        url = f"https://api.census.gov/data/2023/acs/acs5?get=NAME,{var_string}&for=county:*&in=state:{fips}"
+        try:
+            df = pd.read_json(url)
+            df.columns = df.iloc[0]
+            df = df[1:]
+            dfs.append(df)
+        except Exception as e:
+                print(f"Error fetching state {fips}: {e}")
+        
+    if not dfs:
+         raise ValueError("Failed to fetch Census data.")
+    
+    census = pd.concat(dfs, ignore_index=True)
+    
+    # Create 5-digit FIPS for merging (State + County)
+    census['FIPS'] = census['state'] + census['county']
+    
+    # Rename columns
+    census = census.rename(columns=vars_map)
+    
+    # Convert to Numeric
+    for col in vars_map.values():
+        census[col] = pd.to_numeric(census[col], errors='coerce')
+        
+    census['Pct_Poverty'] = (census['Poverty_Count'] / census['Total_Pop']) * 100
+    census['Pct_White'] = (census['White_Count'] / census['Total_Pop']) * 100
+    census['Pct_Black'] = (census['Black_Count'] / census['Total_Pop']) * 100
+    census['Pct_Asian']   = (census['Asian_Count'] / census['Total_Pop']) * 100
+    census['Pct_Hispanic']= (census['Hispanic_Count'] / census['Total_Pop']) * 100
+    census['Pct_Degree'] = (census['Bachelor_Degree_Count'] / census['Total_Pop']) * 100
+    census['Pct_Senior'] = (census['Senior_Count'] / census['Total_Pop']) * 100
+    census['Log_Income'] = np.log1p(census['Median_Income'])
+    
+    # Select final columns
+    return census[['FIPS', 'Total_Pop', 'Log_Income', 'Pct_Poverty', 'Pct_White', 'Pct_Black','Pct_Asian', 'Pct_Hispanic', 'Pct_Degree', 'Pct_Senior']]
+
+census_df = fetch_census_data_standalone()
+```
+
+## Zonal statistics to merge the data
+```{python}
+#| eval: false 
+#| code-summary: "Zonal Statistics"
+
+with rasterio.open(NOISE_RASTER_PATH) as src:
+    target_crs = src.crs
+    nodata_val = src.nodata
+
+model_gdf = model_gdf.to_crs(target_crs)
+
+stats_arithmetic = zonal_stats(
+    model_gdf,
+    NOISE_RASTER_PATH,
+    stats=['mean'],
+    all_touched=True,
+    band=1,
+    nodata=nodata_val
+)
+
+result_gdf = pd.DataFrame(stats_arithmetic)
+result_gdf['locationid'] = model_gdf['locationid'].values
+result_gdf = result_gdf.rename(columns={'mean': 'avg_noise_db'})
+result_gdf = result_gdf.dropna(subset=['avg_noise_db'])
+
+model_gdf = model_gdf.merge(
+    result_gdf,
+    on='locationid',
+    how='left'
+)
+```
+
+Note: I calculated arithmetic mean for decibel value which is physically incorrect due to dB being logarithmic. By using arithmetic mean, this significantly underestimates total noise exposure. While it would be more accurate to convert the raster to acoustic energy, do the zonal stats on energy, then convert back to dB, my abilities and laptop are far too limited to do this. Making this a limitation of my analysis. 
+
+### Standardization & Merge
+
+Before merging, we must ensure our primary keys match perfectly. FIPS (Federal Information Processing Standards) codes are often read as integers by default, which strips the leading zero from states like Alabama, California, or Connecticut.
+
+```{python}
+#| eval: false 
+#| code-summary: "Standardization"
+
+model_gdf['FIPS'] = model_gdf['locationid'].astype(str).str.zfill(5)
+census_df['FIPS'] = census_df['FIPS'].astype(str).str.zfill(5)
+
+# Perform Merge
+final_df = model_gdf.merge(census_df, left_on='FIPS', right_on='FIPS', how='left')
+
+# Physics Correction: Log-Transform the Noise (Decibels are logarithmic, but health impacts often scale linearly with Log(Energy))
+final_df['Log_Noise_Exposure'] = np.log1p(final_df['avg_noise_db'])
+```
+
+
+

@@ -1,0 +1,11 @@
+---
+title: "Overview of Methodology"
+---
+The analysis focused on the Northeast United States (PA, NJ, NY, CT, RI, MA, NH, VT, ME).
+
+## Analytical Approach
+
+1.  **Geospatial Processing:** We aggregated high-resolution noise raster data to the county level using population-weighted zonal statistics.
+2.  **Statistical Modeling:** We employed Ridge Regression and Random Forest models to isolate the effect of noise on health outcomes while controlling for socioeconomic confounders.
+
+For the detailed code and step-by-step implementation, please see the [Data Analysis](data-analysis.qmd) section.

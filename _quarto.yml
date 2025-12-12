@@ -1,0 +1,49 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Transportation Noise Impact on Health"
+  navbar:
+    background: dark
+    search: true
+    left:
+      - href: home.qmd
+        text: Home
+      - href: about_me.qmd
+        text: About Me
+      - href: project-description.qmd
+        text: Project Description
+      - text: Methodology
+        menu:
+        - href: methods.qmd
+          text: Overview
+        - href: data-analysis.qmd
+          text: Data Gathering
+        - href: stats.qmd
+          text: Regression Analysis
+      - href: results.qmd
+        text: Results
+    right:
+      - icon: github
+        href: https://github.com/Jasonfan28/MUSA550-Final-Noise_on_health/
+      - icon: linkedin
+        href: https://www.linkedin.com/in/jasontianchifan/
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
+    toc-title: "On this page"
+    smooth-scroll: true
+    highlight-style: github
+    code-copy: true
+    mainfont: Helvetica
+    code-fold: true
+    code-tools: true
+
+
+

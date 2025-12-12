@@ -1,0 +1,24 @@
+---
+title: "Results"
+---
+# Findings: The Divergence Between Perceived and Physiological Stress
+
+### The "Expectation of Quiet" vs. Biological Reality 
+
+The most critical insight from this study is that environmental quality does not impact mental and physical health in lockstep. Instead, we found a sharp disconnect between how different populations feel about noise and how their bodies physically react to it.
+
+Psychologically, the data supports an "Expectation of Quiet." It is actually the wealthiest and most educated residents who show the steepest rise in depression as noise levels increase. This suggests that for privileged groups, noise is a violation of their environmental standards, leading to acute annoyance and reported distress. Conversely, lower-income groups appear to habituate to the noise, reporting lower depression levels likely because environmental sound is deprioritized amidst more immediate survival stressors.
+
+However, the physiological markers tell a different, more concerning story. Following a classic Environmental Justice pattern, lower-education populations show a strong correlation between noise exposure and high cholesterol. Even if they do not report feeling "stressed" or depressed, their bodies are absorbing the wear and tear of the environment—a phenomenon known as allostatic load.
+
+### The "Cosmopolitan Buffer" and Hidden Costs
+This paradox becomes even clearer when we look at specific neighborhood archetypes. The most striking contradiction is found in Cluster 2 ("The Cosmopolitan Core")—dense, diverse, and noisy urban centers populated by high-income residents.
+
+Residents here benefit from a "Cosmopolitan Buffer." They report the lowest rates of depression (~15%), suggesting that they psychologically offset the annoyance of noise with the social and economic vibrancy of city life. But this resilience comes with a hidden receipt: this same group suffers from the highest prevalence of high cholesterol (~36%). While the amenities of the city protect their mood, the high-stimulation environment is exacting a silent physiological tax.
+
+### The Burden of the Periphery
+On the other end of the spectrum is Cluster 3 ("The Quiet Elite"). These residents enjoy the lowest noise levels and best physical health (lowest cholesterol), yet they report the highest rates of depression (~24%). This reinforces the idea that sensitivity to noise is a byproduct of privilege; without the distraction of urban life, and perhaps isolated by suburban design, these residents are hyper-aware of environmental disturbances.
+
+Ultimately, the heaviest cost falls on Cluster 0 ("The Vulnerable Periphery"). Comprising lower-income, older populations in high-noise areas, this group lacks both the "amenity buffer" of the city center and the "protective wealth" of the elite suburbs. Consequently, they experience moderately high levels of both depression and physiological stress, confirming that the most vulnerable populations lack the resources to decouple their health from their environment.
+
+![noise map](images/noise_avg.png)

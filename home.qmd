@@ -1,0 +1,44 @@
+---
+title: "Transportation Noise and its Impact on Health Outcomes in the Northeast"
+page-layout: full
+---
+
+MUSA 5500 Geospatial Data Science in Python | Jason Fan
+
+::::: grid
+::: {.g-col-12 .g-col-md-6}
+## Project Overview
+
+Does the roar of a highway or the rumble of a train affect your physical and mental health? This project investigates the relationship between **transportation noise pollution** and various health outcomes across counties in the Northeast United States.
+
+By integrating National Transportation Noise Map data with CDC PLACES health data and US Census socioeconomic indicators, we aim to uncover statistical links between our acoustic environment and our well-being.
+
+[Read the Analysis →](data-analysis.qmd){.btn .btn-primary .btn-lg role="button"}
+:::
+
+::: {.g-col-12 .g-col-md-6}
+![Transportation Noise in Northeastern U.S.](images/cover_image.png)
+:::
+:::::
+
+## Key Findings at a Glance
+
+:::::: grid
+::: {.g-col-12 .g-col-md-4}
+### The "Expectation of Quiet"
+
+Psychological sensitivity to noise is linked to privilege. High-income/education groups report the **highest depression** rates (~24%) despite living in the quietest areas, suggesting a lower tolerance for environmental disturbance.
+:::
+
+::: {.g-col-12 .g-col-md-4}
+### The "Cosmopolitan Buffer"
+
+A striking paradox exists in dense urban cores: residents report the **lowest depression** (~15%) yet suffer the **highest cholesterol** (~36%). The social vibrancy of the city protects the mind, but the noise silently taxes the body.
+:::
+
+::: {.g-col-12 .g-col-md-4}
+### The Hidden "Body Tax"
+
+While lower-income groups report less psychological distress (likely due to habituation), their bodies keep the score. We observed a classic **Environmental Justice** pattern where noise exposure correlates strongly with high cholesterol (Allostatic Load) in lower-education populations.
+:::
+::::::

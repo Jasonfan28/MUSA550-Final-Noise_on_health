@@ -1,0 +1,11 @@
+---
+title: "About Me"
+---
+
+::::: grid
+::: {.g-col-12 .g-col-md-6}
+Hi! I'm Jason Tianchi Fan, a Master of City Planning student at the University of Pennsylvania. 
+![qr](images/qr.png)
+:::
+::: {.g-col-12 .g-col-md-6}
+![That's me :)](images/profile.jpg)

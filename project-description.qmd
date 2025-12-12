@@ -1,0 +1,24 @@
+---
+title: "Project Description"
+---
+## Motivation
+
+Noise pollution is often an overlooked environmental stressor. While air pollution's effects are well-documented, the chronic stress caused by transportation noise, from road, rail, and aviation, may have significant impacts on cardiovascular and mental health.
+
+## Data Sources
+
+Three primary datasets were utilized for this analysis:
+
+1.  **National Transportation Noise Map (2020):**
+    * *Source:* US Department of Transportation.
+    * *Format:* Raster data (.tif/vrt).
+    * *Metric:* 24-hour equivalent sound level (LAeq24).
+
+2.  **CDC PLACES Data (2023):**
+    * *Source:* Centers for Disease Control and Prevention.
+    * *Format:* API / GeoJSON.
+    * *Metrics:* County-level prevalence of 18 health outcomes (e.g., Depression, Stroke, Asthma).
+
+3.  **US Census ACS (2021):**
+    * *Source:* American Community Survey (5-Year Estimates).
+    * *Metrics:* Poverty rates, median income, racial demographics, and education levels (used as control variables).
